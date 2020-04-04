@@ -4,39 +4,39 @@ function Login() {
   return (
     <div>
       <div className="row">
-        <div className="col s3" id="login-left">
+        <div className="col">
           <div className="login-form">
             <form className="login">
               <div className="form-group">
-                <label for="exampleInputEmail1"></label>
+                <label className= "exampleInputEmail1"> </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="email-input"
                   placeholder="Email"
                 />
               </div>
               <div className="form-group">
-                <label for="exampleInputPassword1"></label>
+                <label className="exampleInputPassword1"></label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="password-input"
                   placeholder="Password"
                 />
               </div>
               <div>
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn">
                   Login
                 </button>
-                <a href="signup.html"></a>
-                <button class="btn btn-default">Sign Up</button>
+                <a href="Signup.js"></a>
+                <button className="btn">Sign Up</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <div className="col s9 image-right">
+      <div className="col">
         <div className="text">
           <h1>Welcome to Excelsior Comics!</h1>
           <div className="P">

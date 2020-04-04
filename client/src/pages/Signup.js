@@ -57,7 +57,6 @@ function Signup() {
               <input
                 type="password"
                 className="form-control"
-                id="password-confirm"
                 placeholder="Confirm Password"
               />
             </div>
@@ -65,23 +64,19 @@ function Signup() {
               style
               display="none"
               id="alert"
-              className="alert alert-danger"
+              className="alert"
               role="alert"
             >
-              <span
-                className="glyphicon glyphicon-exclamation-sign"
-                aria-hidden="true"
-              ></span>
-              <span className="sr-only">Error:</span>{" "}
+              <span className="sr-only">Error:</span>
               <span className="msg"></span>
             </div>
           </form>
         </div>
-        <div className="row category-text">
+        <div className="row">
           <h2>Great!</h2>
           <h5>Please choose your interests!</h5>
           <div className="row checkboxes">
-            <form className="category-selector" action="#">
+            <form className="category-selector">
               <div className="col">
                 <p>
                   <label>
@@ -111,10 +106,10 @@ function Signup() {
             </form>
           </div>
         </div>
-        <button type="button" className="btn btn-default" id="submit-1">
+        <button type="button" className="btn">
           Next
         </button>
-        <p>{/* Or log in <a href="login.js">here</a> */}</p>
+        <p> Or log in <a href="Login.js"> here </a> </p>
       </div>
     </div>
   );
