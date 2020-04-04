@@ -2,7 +2,7 @@ import React from "react";
 
 function Signup() {
   return (
-    <div className="row-form-1">
+    <div className="row-form-1 container">
       <div className="basic-info" col-md-4 col-md-offset-3>
         <div className="welcome-text">
           <br />
@@ -59,16 +59,6 @@ function Signup() {
                 className="form-control"
                 placeholder="Confirm Password"
               />
-            </div>
-            <div
-              style
-              display="none"
-              id="alert"
-              className="alert"
-              role="alert"
-            >
-              <span className="sr-only">Error:</span>
-              <span className="msg"></span>
             </div>
           </form>
         </div>
