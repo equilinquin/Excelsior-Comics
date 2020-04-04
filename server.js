@@ -1,12 +1,20 @@
 const express = require("express");
+const session = require("express-session");
 // const mongoose = require("mongoose");
 const path = require("path");
+const passport = require("./config/passport");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");

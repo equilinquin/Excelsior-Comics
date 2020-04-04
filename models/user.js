@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
+const uniqueValidator = require("mongoose-unique-validator");
+const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
   firstName: {
@@ -33,22 +34,17 @@ const UserSchema = new Schema({
     default: Date.now
   },
 
-  // lastUpdated: Date,
-
-  // fullName: String
 });
 
-// UserSchema.methods.setFullName = function() {
-//   this.fullName = `${this.firstName} ${this.lastName}`;
+UserSchema.plugin(uniqueValidator);
 
-//   return this.fullName;
-// };
+UserSchema.methods.validPassword = (passwordHash) => {
+  return bcrypt.compareSync(passwordHash, this.password);
+};
 
-// UserSchema.methods.lastUpdatedDate = function() {
-//   this.lastUpdated = Date.now();
-
-//   return this.lastUpdated;
-// };
+UserSchema.virtual("password").set((value) => {
+  this.password = bcrypt.hashSync(value, 10);
+})
 
 const User = mongoose.model("User", UserSchema);
 
