@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
@@ -36,15 +35,12 @@ const UserSchema = new Schema({
 
 });
 
-UserSchema.plugin(uniqueValidator);
-
-UserSchema.methods.validPassword = (passwordHash) => {
-  return bcrypt.compareSync(passwordHash, this.password);
+UserSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
-
-UserSchema.virtual("password").set((value) => {
-  this.password = bcrypt.hashSync(value, 10);
-})
+UserSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 const User = mongoose.model("User", UserSchema);
 
