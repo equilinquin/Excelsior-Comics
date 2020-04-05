@@ -29,7 +29,6 @@ function Login() {
                 <button type="submit" class="btn">
                   Login
                 </button>
-                <a href="Signup.js"></a>
                 <button className="btn">Sign Up</button>
               </div>
             </form>
