@@ -1,51 +1,43 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
-    <div>
+    <div className="container">
+
       <div className="row">
-        <div className="col">
-          <div className="login-form">
-            <form className="login">
-              <div className="form-group">
-                <label className= "exampleInputEmail1"> </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email-input"
-                  placeholder="Email"
-                />
-              </div>
-              <div className="form-group">
-                <label className="exampleInputPassword1"></label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password-input"
-                  placeholder="Password"
-                />
-              </div>
-              <div>
-                <button type="submit" class="btn">
-                  Login
-                </button>
-                <button className="btn">Sign Up</button>
-              </div>
-            </form>
-          </div>
+        <div className="col s12">
+          <h1 className="center-align">Welcome to Excelsior Comics!</h1>
+          <h3>Discover the world of digital comics.</h3>
+          <h3>Happy hunting!</h3>
         </div>
       </div>
-      <div className="col">
-        <div className="text">
-          <h1>Welcome to Excelsior Comics!</h1>
-          <div className="P">
-            {" "}
-            Discover the world of digital comics.
-            <br />
-            Happy Hunting!
+
+      <div className="row">
+        <div className="col s12">
+          <div className="row">
+            <div className="input-field col s12 m6">
+              <input id="password" type="email" className="validate" />
+              <label for="password">Email</label>
+            </div>
+            <div className="input-field col s12 m6">
+              <input id="password" type="password" className="validate" />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s12">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+            </div>
+            <div className="input-field col s12">
+              <h5>Don't have an account yet? Sign up <Link to="/signup">here</Link></h5>
+              <h5>Click <Link to="/home">here</Link> to explore as a guest</h5>
+            </div>
           </div>
         </div>
+
       </div>
+      
     </div>
   );
 }

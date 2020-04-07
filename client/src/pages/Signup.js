@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SignupCard from "../components/SignupCard";
 import "./style.css";
 
@@ -19,6 +20,11 @@ function Signup() {
       </div>
 
       <SignupCard />
+
+      <div>
+        <h5>Already have an account? Log in <Link to="/login">here</Link></h5>
+        <h5>Click <Link to="/home">here</Link> to explore as a guest</h5>
+      </div>
 
     </div>
 
