@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
   firstName: {
@@ -33,22 +33,14 @@ const UserSchema = new Schema({
     default: Date.now
   },
 
-  // lastUpdated: Date,
-
-  // fullName: String
 });
 
-// UserSchema.methods.setFullName = function() {
-//   this.fullName = `${this.firstName} ${this.lastName}`;
-
-//   return this.fullName;
-// };
-
-// UserSchema.methods.lastUpdatedDate = function() {
-//   this.lastUpdated = Date.now();
-
-//   return this.lastUpdated;
-// };
+UserSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+UserSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 const User = mongoose.model("User", UserSchema);
 
