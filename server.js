@@ -3,7 +3,10 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const Marvel = require("marvel");
 const path = require("path");
-//const passport = require("./config/passport");
+const passport = require("./config/passport");
+const MongoStore = require("connect-mongo")(session);
+const dbConnection = require("./config/mongoStore");
+const user = require("./routes/user");
 
 // Configure Express app
 const app = express();
@@ -14,10 +17,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({ 
+    secret: "keyboard cat", 
+    store: new MongoStore({ mongooseConnection: dbConnection }),
+    resave: true, 
+    saveUninitialized: true })
 );
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect to the Mongo DB
  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");
@@ -29,7 +36,7 @@ if (process.env.NODE_ENV === "production") {
 
 // API routes
 
-require('./routes')(app);
+app.use('/user', user);
 
 // Create an instance of the Marvel API library for use in API routes
 const marvel = new Marvel(
