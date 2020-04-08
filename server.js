@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const Marvel = require("marvel");
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 3001;
 // Define middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.use(
   session({ 

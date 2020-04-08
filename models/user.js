@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     trim: true,
     required: "Last Name is Required"
   },
-  
+
   email: {
     type: String,
     unique: true,
@@ -28,6 +28,13 @@ const UserSchema = new Schema({
     validate: [({ length }) => length > 8, "Password should be longer."]
   },
 
+  favorites: {
+    type: String,
+    trim: true,
+    required: "Password is Required",
+    validate: [({ length }) => length > 8, "Password should be longer."]
+  },
+
   userCreated: {
     type: Date,
     default: Date.now
@@ -35,10 +42,10 @@ const UserSchema = new Schema({
 
 });
 
-UserSchema.methods.generateHash = function(password) {
+UserSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, 10);
 };
-UserSchema.methods.validPassword = function(password) {
+UserSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
