@@ -19,17 +19,18 @@ app.use(express.json());
 app.use(cors());
 
 app.use(
-  session({ 
-    secret: "keyboard cat", 
+  session({
+    secret: "keyboard cat",
     store: new MongoStore({ mongooseConnection: dbConnection }),
-    resave: true, 
-    saveUninitialized: true })
+    resave: true,
+    saveUninitialized: true
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Connect to the Mongo DB
- mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
@@ -68,6 +69,46 @@ app.get("/api/comics/:title", (req, res) => {
       return res.send(err).status(409).statusMessage("Server error");
     }
     res.json(resp);
+  });
+});
+
+// Add a character to favorites
+app.post("/api/favorites", (req, res) => {
+  // Make sure a user is logged in
+  if (!req.user) {
+    return res.json({ error: "No user is signed in." });
+  }
+  const { email } = req.user;
+
+  // Make sure user has an email address
+  if (!email) {
+    return res.json({ error: "Couldn't retrieve email address for current user" });
+  }
+  const { characterID } = req.body;
+
+  // Make sure a character ID was included with the POST request
+  if (!characterID) {
+    return res.json({ error: "No character ID was given." });
+  }
+
+  // Search the Marvel API for the character to make sure the character ID is valid
+  marvel.characters.id(characterID, character => {
+    if (!character || character.length === 0) {
+      return res.json({ error: "Character not found." });
+    }
+
+    // Add the character ID to the user's favorites
+    req.user.favorites.push(characterID);
+
+    // Save changes
+    req.user.save((err, savedResult) => {
+      if (err) {
+        return res.json(err);
+      }
+
+      // Respond with the saved document as confirmation save was successful
+      res.json(savedResult);
+    });
   });
 });
 
