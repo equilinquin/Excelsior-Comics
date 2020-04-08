@@ -35,6 +35,8 @@ const UserSchema = new Schema({
     validate: [({ length }) => length > 8, "Password should be longer."]
   },
 
+  favorites: Array,
+
   userCreated: {
     type: Date,
     default: Date.now
