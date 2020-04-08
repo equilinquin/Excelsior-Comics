@@ -8,7 +8,6 @@ const passport = require("./config/passport");
 const MongoStore = require("connect-mongo")(session);
 const dbConnection = require("./config/mongoStore");
 const user = require("./routes/user");
-const User = require("./models/user");
 
 // Configure Express app
 const app = express();
@@ -79,43 +78,36 @@ app.post("/api/favorites", (req, res) => {
   if (!req.user) {
     return res.json({ error: "No user is signed in." });
   }
-  { email } = req.user;
-  
+  const { email } = req.user;
+
   // Make sure user has an email address
   if (!email) {
     return res.json({ error: "Couldn't retrieve email address for current user" });
   }
+  const { characterID } = req.body;
 
-  // Find user record in db based on their email address
-  User.findOne({ email: email }, (err, result) => {
-    if (err) {
-      return res.json({ error: "Couldn't retrieve user's database record based on supplied email address." });
+  // Make sure a character ID was included with the POST request
+  if (!characterID) {
+    return res.json({ error: "No character ID was given." });
+  }
+
+  // Search the Marvel API for the character to make sure the character ID is valid
+  marvel.characters.id(characterID, character => {
+    if (!character || character.length === 0) {
+      return res.json({ error: "Character not found." });
     }
-    { characterID } = req.body;
 
-    // Make sure a character ID was included with the POST request
-    if (!characterID) {
-      return res.json({ error: "No character ID was given." });
-    }
+    // Add the character ID to the user's favorites
+    req.user.favorites.push(characterID);
 
-    // Search the Marvel API for the character to make sure the character ID is valid
-    marvel.characters.id(characterID, character => {
-      if (!character || character.length === 0) {
-        return res.json({error: "Character not found."});
+    // Save changes
+    req.user.save((err, savedResult) => {
+      if (err) {
+        return res.json(err);
       }
 
-      // Add the character ID to to the user's favorites
-      result.favorites.push(characterID);
-
-      // Save changes
-      result.save((err, savedResult) => {
-        if (err) {
-          return res.json(err);
-        }
-
-        // Respond with the saved document as confirmation save was successful
-        res.json(savedResult);
-      });
+      // Respond with the saved document as confirmation save was successful
+      res.json(savedResult);
     });
   });
 });
