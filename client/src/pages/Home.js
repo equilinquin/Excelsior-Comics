@@ -11,13 +11,17 @@ export default class Home extends Component {
       order: "ascending",
       sortedComics: [{}],
       handleSearch: (e) => {
+        e.preventDefault();
         console.log(e.target.value);
-        const search = e.target.value;
-        const sortedComics = this.state.comics.filter((event) => {
-          let searchItem = Object.values(event).join("").toLowerCase();
-          return searchItem.indexOf(search.toLowerCase()) !== -1;
+        const search = document.getElementById("searchTerm").value;
+        marvel.getComics(search, (APIresults) => {
+          console.log(APIresults);
+          this.setState({ ...this.state, sortedComics: APIresults });
         });
-        this.setState({ sortedComics: sortedComics });
+        // const sortedComics = this.state.comics.filter((event) => {
+        //   let searchItem = Object.values(event).join("").toLowerCase();
+        //   return searchItem.indexOf(search.toLowerCase()) !== -1;
+        // });
       },
     };
   }
@@ -25,9 +29,9 @@ export default class Home extends Component {
   // Uncomment once API is called
    componentDidMount() {
      // waits until component is called on to show up in broswer and then does a function
-     marvel.getComics("Avengers", function(APIresults) {
-       console.log(APIresults);
-     });
+    //  marvel.getComics("Avengers", function(APIresults) {
+    //    console.log(APIresults);
+    //  });
     //  .then((APIresults) => {
     //    // as soon as component is ready on users browsers, results will be waiting to do something with them
     //    this.setState({
