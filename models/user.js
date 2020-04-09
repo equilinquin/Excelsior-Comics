@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new Schema({
+
     firstName: {
         type: String,
         required: true
@@ -22,8 +23,8 @@ const UserSchema = new Schema({
         required: true
     },
     favorites: {
-      type: String,
-      trim: true,
+        type: Array,
+        default: []
   },
 
   userCreated: {

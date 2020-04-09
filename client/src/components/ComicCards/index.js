@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function ComicCards({ sortedComics }) {
+  console.log(sortedComics);
   return (
     <div>
       {/* //conditional with statement and question mark to check and see if something is in array */}
       {/* //below is kind of like a mini if else statement */}
       {/* // below that is what to do */}
-        {sortedComics[0] !== undefined && sortedComics[0].name !== undefined ? (
-          sortedComics.map(({ character }) => {
+        {sortedComics !== undefined && sortedComics[0].title !== undefined ? (
+          sortedComics.map( (result) => {
           //{character.name}
           //img src={image.url} however it's phrased
           return (
@@ -18,7 +19,7 @@ function ComicCards({ sortedComics }) {
                 <div className="card">
                   <div className="card-image">
                     <img src="" alt=""/>
-                    <span className="card-title"></span>
+                    <span className="card-title">{result.title}</span>
                     <Link className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></Link>
                   </div>
                   <div className="card-content">
