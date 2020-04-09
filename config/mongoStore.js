@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise
 
 //your local database url
 //27017 is the default mongoDB port
-const uri = "mongodb://localhost:27017/excelsiorlogin" 
+const uri = "mongodb://localhost:27017/excelsiorsession" 
 
 mongoose.connect(uri).then(
     () => { 
