@@ -21,6 +21,7 @@
       padding-right:6vmin;
       padding-left:1vmin;
       top:-5vmin;
+      left: 5%;
       padding-top:1vmin;
       padding-bottom:0vmin;
       position:relative;
@@ -29,7 +30,7 @@
 #nav-mobile.hangar {
       position:relative;
       display:inline-block;
-      left:10%;
+      left: 50%;
       top: -15%;
       border:0.01vmin solid #d3c8bd;
       font-family: Teko;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import style from "../styles/home.css";
 
 function Login() {
   return (
@@ -7,7 +8,7 @@ function Login() {
 
       <div className="row">
         <div className="col s12">
-          <h1 className="center-align">Welcome to Excelsior Comics!</h1>
+          <h1 className="title">Welcome to Excelsior Comics!</h1>
           <h3>Discover the world of digital comics.</h3>
           <h3>Happy hunting!</h3>
         </div>

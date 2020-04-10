@@ -1,4 +1,5 @@
-.cols12.form-inline {
+form.form-inline {
+    top: 40%;
     width: 960px;
     height: fit-content;
 }

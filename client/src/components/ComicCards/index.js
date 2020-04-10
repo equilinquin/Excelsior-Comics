@@ -15,18 +15,24 @@ function ComicCards({ sortedComics }) {
           let url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
           let altText = `${result.title}`;
           let link = `${result.urls[0].url}`;
-          return (
-            <div className="col s6 m4 l3">
-              <div className="card">
-                <div className="card-image">
-                  <a href={link}><img src={url} alt={altText}/></a>
-                  <Link className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></Link>
+            return (
+              
+                <div className="col s6 m4 l3">
+                  <div className="card">
+                    <div className="card-image">
+                      <a href={link}>
+                        <img src={url} alt={altText} />
+                      </a>
+                      <Link className="btn-floating halfway-fab waves-effect waves-light red">
+                        <i className="material-icons">add</i>
+                      </Link>
+                    </div>
+                    <div className="card-content">
+                      <p>Series: </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="card-content">
-                  <p>Series: </p>
-                </div>
-              </div>
-            </div>
+              
             );
           })
         ) : (

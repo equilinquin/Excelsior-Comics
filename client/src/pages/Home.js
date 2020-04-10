@@ -26,32 +26,29 @@ export default class Home extends Component {
 
   render() {
     return (
+     <div>
       <div>
-
         <Navbar />
-
+      </div>
         <div className="body">
-
           <div className="row">
-            <div className="col s12">
-              <h5 className="center-align">Start searching by character or title:</h5>
-            </div>
-          
 
             <div className="container row">
-            <div className="col s12">
-              <Search handleSearch={this.state.handleSearch} />
+              <div className="col s12">
+                <h5 className="center-align">
+                  Start searching by character or title:
+                </h5>
+                <Search handleSearch={this.state.handleSearch} />
+              </div>
             </div>
-          </div>
           </div>
 
           <div className="row">
             <ComicCards sortedComics={this.state.sortedComics} />
           </div>
-
         </div>
-
-      </div>
+        </div>
+      
     );
   }
 }
