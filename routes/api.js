@@ -13,13 +13,13 @@ router.post("/signup", function (req, res, next) {
       username: req.body.email,
     }),
     req.body.password,
-    function (err) {
+    function (err,user) {
       if (err) {
         console.log("error while user register!", err);
         return next(err);
       }
       console.log("user registered!");
-      res.redirect("/");
+      res.json({...user, salt:null, hash:null})
     }
   );
 });
