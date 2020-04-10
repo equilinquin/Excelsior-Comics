@@ -4,6 +4,7 @@ import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
 import Search from "../components/Search/index";
 import ComicCards from "../components/ComicCards/index";
+import styles from "../styles/home.css"
 
 export default class Home extends Component {
   constructor() {
@@ -29,18 +30,19 @@ export default class Home extends Component {
 
         <Navbar />
 
-        <div className="">
+        <div className="body">
 
           <div className="row">
             <div className="col s12">
               <h5 className="center-align">Start searching by character or title:</h5>
             </div>
-          </div>
+          
 
-          <div className="container row">
+            <div className="container row">
             <div className="col s12">
               <Search handleSearch={this.state.handleSearch} />
             </div>
+          </div>
           </div>
 
           <div className="row">

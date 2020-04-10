@@ -4,7 +4,7 @@ import "./style.css";
 
 function Navbar({ handleSearch }) {
   return (
-    <div class="nav-wrapper">
+    <div className="nav-wrapper">
       <h1>
         Excelsior Comics <a className="navbar-brand" href="/"></a>
       </h1>

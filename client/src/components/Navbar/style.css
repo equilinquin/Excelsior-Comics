@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Teko:500');
 
 .nav-wrapper {
-      height:20%;
+      height:auto;
       width:100%;
       left:0px;
       top:0px;
-      background-color:#0e1015;
+      background-color:#740d1b;
       position:fixed;
       border-bottom:1vmin solid #d3c8bd;
 }
