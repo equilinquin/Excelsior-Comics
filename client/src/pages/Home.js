@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
+import Navbar from "../components/Navbar";
 import Search from "../components/Search/index";
 import ComicCards from "../components/ComicCards/index";
 
@@ -50,14 +51,7 @@ export default class Home extends Component {
     return (
       <div>
 
-        <nav>
-          <div className="nav-wrapper">
-            <Link to="/home" className="brand-logo">Welcome</Link>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><Link className="navbar-brand" to="/login">Logout</Link></li>
-            </ul>
-          </div>
-        </nav>
+        <Navbar />
 
         <div className="container">
 
