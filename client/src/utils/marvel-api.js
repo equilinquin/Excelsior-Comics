@@ -15,12 +15,12 @@ function callApi(api, param, cb) {
 const marvelApi = {
     // Search for characters by name
     getCharacters: function (name, cb) {
-        callApi("characters", name, cb);
+        callApi("characters/name", name, cb);
     },
 
     // Search for comics by title
     getComics: function(title, cb) {
-        callApi("comics", title, cb);
+        callApi("comics/title", title, cb);
     }
 };
 
