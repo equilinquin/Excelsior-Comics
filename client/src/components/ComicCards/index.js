@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function ComicCards({ sortedComics }) {
-  console.log(sortedComics);
   return (
     <div>
       {/* //conditional with statement and question mark to check and see if something is in array */}
@@ -13,18 +12,18 @@ function ComicCards({ sortedComics }) {
           sortedComics.map( (result) => {
           //{character.name}
           //img src={image.url} however it's phrased
+          let url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
+          let altText = `${result.title}`;
+          let link = `${result.urls[0].url}`;
           return (
-            <div className="row">
-              <div className="col s12 m6">
-                <div className="card">
-                  <div className="card-image">
-                    <img src="" alt=""/>
-                    <span className="card-title">{result.title}</span>
-                    <Link className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></Link>
-                  </div>
-                  <div className="card-content">
-                    <p></p>
-                  </div>
+            <div className="col s6 m4 l3">
+              <div className="card">
+                <div className="card-image">
+                  <a href={link}><img src={url} alt={altText}/></a>
+                  <Link className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></Link>
+                </div>
+                <div className="card-content">
+                  <p>Series: </p>
                 </div>
               </div>
             </div>

@@ -19,41 +19,17 @@ export default class Home extends Component {
           console.log(APIresults);
           this.setState({ ...this.state, sortedComics: APIresults });
         });
-        // const sortedComics = this.state.comics.filter((event) => {
-        //   let searchItem = Object.values(event).join("").toLowerCase();
-        //   return searchItem.indexOf(search.toLowerCase()) !== -1;
-        // });
       },
     };
   }
-  // handleAPI and onClick method
-  // Uncomment once API is called
-   componentDidMount() {
-     // waits until component is called on to show up in broswer and then does a function
-    //  marvel.getComics("Avengers", function(APIresults) {
-    //    console.log(APIresults);
-    //  });
-    //  .then((APIresults) => {
-    //    // as soon as component is ready on users browsers, results will be waiting to do something with them
-    //    this.setState({
-    //      comics: APIresults.data.results,
-    //      //.data comes from API
-    //      filteredSearch: APIresults.data.results,
-    //      //build table and get results to display
-    //      //this.state.users to show up on page
-    //      //map function used when info inside db will be changing and it will need to be updated and displayed
-    //    });
-    //    console.log(this.state.comics);
-    //    //sort by one category and filter by one property
-    //  });
-   }
+
   render() {
     return (
       <div>
 
         <Navbar />
 
-        <div className="container">
+        <div className="">
 
           <div className="row">
             <div className="col s12">
@@ -68,9 +44,7 @@ export default class Home extends Component {
           </div>
 
           <div className="row">
-            <div className="col s12">
-              <ComicCards sortedComics={this.state.sortedComics} />
-            </div>
+            <ComicCards sortedComics={this.state.sortedComics} />
           </div>
 
         </div>
