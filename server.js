@@ -3,6 +3,7 @@ const cors = require("cors");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const Marvel = require("marvel");
+const axios = require("axios");
 const path = require("path");
 const passport = require("./config/passport");
 const MongoStore = require("connect-mongo")(session);
@@ -37,9 +38,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// API routes
-
 app.use('/user', user);
+
+// API routes
 
 // Create an instance of the Marvel API library for use in API routes
 const marvel = new Marvel(
@@ -51,54 +52,84 @@ const marvel = new Marvel(
 );
 
 // Find a character by name
-app.get("/api/characters/:name", (req, res) => {
-  const name = req.params.name;
-  marvel.characters.nameStartsWith(name).get((err, resp) => {
+app.get("/api/characters/name/:name", (req, res) => {
+  const { name } = req.params;
+  marvel.characters.nameStartsWith(name).get((err, characters) => {
     if (err) {
-      return res.send(err).status(409).statusMessage("Server error");
+      return res.json(err);
     }
-    res.json(resp);
+    res.json(characters);
+  });
+});
+
+// Find a character by ID
+app.get("/api/characters/id/:id", (req, res) => {
+  const { id } = req.params;
+  marvel.characters.id(id).get((err, character) => {
+    if (err) {
+      return res.json(err);
+    }
+    res.json(character);
   });
 });
 
 // Find a comic by title
-app.get("/api/comics/:title", (req, res) => {
-  const title = req.params.title;
-  marvel.comics.titleStartsWith(title).get((err, resp) => {
+app.get("/api/comics/title/:title", (req, res) => {
+  const { title } = req.params;
+  marvel.comics.titleStartsWith(title).get((err, comics) => {
     if (err) {
-      return res.send(err).status(409).statusMessage("Server error");
+      return res.json(err);
     }
-    res.json(resp);
+    res.json(comics);
+  });
+});
+
+// Find a comic by ID
+app.get("/api/comics/id/:id", (req, res) => {
+  const { id } = req.params;
+  marvel.comics.id(id).get((err, comic) => {
+    if (err) {
+      return res.json(err);
+    }
+    res.json(comic);
   });
 });
 
 // Add a character to favorites
-app.post("/api/favorites", (req, res) => {
-  // Make sure a user is logged in
-  if (!req.user) {
-    return res.json({ error: "No user is signed in." });
-  }
-  const { email } = req.user;
-
-  // Make sure user has an email address
-  if (!email) {
-    return res.json({ error: "Couldn't retrieve email address for current user" });
-  }
-  const { characterID } = req.body;
-
-  // Make sure a character ID was included with the POST request
-  if (!characterID) {
-    return res.json({ error: "No character ID was given." });
-  }
+app.post("/api/favorites/characters", (req, res) => {
+  const { id } = req.body;
 
   // Search the Marvel API for the character to make sure the character ID is valid
-  marvel.characters.id(characterID, character => {
-    if (!character || character.length === 0) {
-      return res.json({ error: "Character not found." });
+  marvel.characters.id(id).get((err, character) => {
+    if (err) {
+      return res.json(err);
     }
-
     // Add the character ID to the user's favorites
-    req.user.favorites.push(characterID);
+    req.user.favorites.characters.push(character.id);
+
+    // Save changes
+    req.user.save((err, savedResult) => {
+      if (err) {
+        return res.json(err);
+      }
+
+      // Respond with the saved document as confirmation save was successful
+      res.json(savedResult);
+    });
+  });
+});
+
+// Add a comic to favorites
+app.post("/api/favorites/comics", (req, res) => {
+  const { id } = req.body;
+
+  // Search the Marvel API for the comic to make sure the comic ID is valid
+  marvel.comics.id(id).get((err, comic) => {
+    if (err) {
+      return res.json(err);
+    }
+    // Add the comic ID to the user's favorites
+    req.user.favorites.comics.push(comic.id);
 
     // Save changes
     req.user.save((err, savedResult) => {
