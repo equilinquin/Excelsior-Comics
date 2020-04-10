@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+// import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
+import Navbar from "../components/Navbar";
 import Search from "../components/Search/index";
 import ComicCards from "../components/ComicCards/index";
 
@@ -7,66 +9,46 @@ export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      comics: [{}],
       order: "ascending",
       sortedComics: [{}],
       handleSearch: (e) => {
+        e.preventDefault();
         console.log(e.target.value);
-        const search = e.target.value;
-        const sortedComics = this.state.comics.filter((event) => {
-          let searchItem = Object.values(event).join("").toLowerCase();
-          return searchItem.indexOf(search.toLowerCase()) !== -1;
+        const search = document.getElementById("searchTerm").value;
+        marvel.getComics(search, (APIresults) => {
+          console.log(APIresults);
+          this.setState({ ...this.state, sortedComics: APIresults });
         });
-        this.setState({ sortedComics: sortedComics });
       },
     };
   }
-  // handleAPI and onClick method
-  // Uncomment once API is called
-   componentDidMount() {
-     // waits until component is called on to show up in broswer and then does a function
-     marvel.getComics("Avengers", function(result) {
-       console.log(result);
-     });
-    //  .then((APIresults) => {
-    //    // as soon as component is ready on users browsers, results will be waiting to do something with them
-    //    this.setState({
-    //      users: APIresults.data.results,
-    //      //.data comes from API
-    //      filteredSearh: APIresults.data.results,
-    //      //build table and get results to display
-    //      //this.state.users to show up on page
-    //      //map function used when info inside db will be changing and it will need to be updated and displayed
-    //    });
-    //    console.log(this.state.filteredSearch);
-    //    //sort by one category and filter by one property
-    //  });
-   }
+
   render() {
     return (
-      <div className="container">
-        <div className="wrapper">
-          <Search handleSearch={this.state.handleSearch} />
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6 col-md-offset-3">
-                <h2>
-                  Welcome <span className="member-name"></span>
-                </h2>
-              </div>
+      <div>
+
+        <Navbar />
+
+        <div className="">
+
+          <div className="row">
+            <div className="col s12">
+              <h5 className="center-align">Start searching by character or title:</h5>
             </div>
           </div>
-          <ComicCards sortedComics={this.state.sortedComics} />
-          <nav className="navbar navbar-default">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <a className="navbar-brand" href="/login">
-                  Logout
-                </a>
-              </div>
+
+          <div className="container row">
+            <div className="col s12">
+              <Search handleSearch={this.state.handleSearch} />
             </div>
-          </nav>
+          </div>
+
+          <div className="row">
+            <ComicCards sortedComics={this.state.sortedComics} />
+          </div>
+
         </div>
+
       </div>
     );
   }

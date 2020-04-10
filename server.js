@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
+//const session = require("express-session");
 const mongoose = require("mongoose");
 const Marvel = require("marvel");
 const axios = require("axios");
 const path = require("path");
-const passport = require("./config/passport");
-const MongoStore = require("connect-mongo")(session);
-const dbConnection = require("./config/mongoStore");
-const user = require("./routes/user");
+const passport = require("passport");
+const router = require("./routes/api");
+const User = require("./models/user");
+const LocalStrategy = require("passport-local").Strategy;
 
 // Configure Express app
 const app = express();
@@ -19,16 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-app.use(
-  session({
-    secret: "keyboard cat",
-    store: new MongoStore({ mongooseConnection: dbConnection }),
-    resave: true,
-    saveUninitialized: true
-  })
-);
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser(User.serializeUser()); 
+passport.deserializeUser(User.deserializeUser()); 
+
+passport.use(new LocalStrategy({usernameField: 'email'}, User.authenticate()))
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");
@@ -38,9 +35,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use('/user', user);
-
 // API routes
+
+app.use('/user', router);
+
+
 
 // Create an instance of the Marvel API library for use in API routes
 const marvel = new Marvel(
