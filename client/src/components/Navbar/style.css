@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Teko:500');
+
+.nav-wrapper {
+      height:20%;
+      width:100%;
+      left:0px;
+      top:0px;
+      background-color:#0e1015;
+      position:fixed;
+      border-bottom:1vmin solid #d3c8bd;
+}
+
+
+.nav-wrapper h1 {
+      font-size:12vmin;
+      color:#d3c8bd;
+      font-family:'Teko';
+      font-weight:100;
+      border-right:1vmin solid #d3c8bd;
+      display:inline-block;
+      padding-right:6vmin;
+      padding-left:1vmin;
+      top:-5vmin;
+      padding-top:1vmin;
+      padding-bottom:0vmin;
+      position:relative;
+}
+
+#nav-mobile.hangar {
+      position:relative;
+      display:inline-block;
+      left:10%;
+      top: -15%;
+      border:0.01vmin solid #d3c8bd;
+      font-family: Teko;
+      font-size:3vmin;
+      margin-right:1vmin;
+      text-decoration:none;
+      color:#d3c8bd;
+      width:10%;
+      text-align:center;
+      padding-top:2vmin;
+      padding-bottom:2vmin;
+      text-transform:uppercase;
+      
+      -webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+
+
+#nav-mobile.hangar:hover
+{
+      background-color:RGBA(000,000,000,0.5);
+      -webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+
+
+
+
