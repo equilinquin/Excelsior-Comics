@@ -27,7 +27,7 @@ function Login() {
           </div>
           <div className="row">
             <div className="input-field col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+              <button class="btn waves-effect waves-light" type="submit" name="action">Log In</button>
             </div>
             <div className="input-field col s12">
               <h5>Don't have an account yet? Sign up <Link to="/signup">here</Link></h5>
