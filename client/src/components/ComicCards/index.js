@@ -15,6 +15,7 @@ function ComicCards({ sortedComics }) {
           let url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
           let altText = `${result.title}`;
           let link = `${result.urls[0].url}`;
+          // let buyLink = `${result.urls[1].url}`;
           return (
             <div className="col s6 m4 l3">
               <div className="card">
@@ -22,8 +23,11 @@ function ComicCards({ sortedComics }) {
                   <a href={link}><img src={url} alt={altText}/></a>
                   <Link className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></Link>
                 </div>
-                <div className="card-content">
-                  <p>Series: </p>
+                <div className="card-content" style={{minHeight: "200px"}}>
+                  <p>Title: {result.title}</p>
+                  <p>Series: {result.series.name}</p>
+                  <p>Issue: {result.issueNumber}</p>
+                  <p>Writer: {result.creators.items[0].name}</p>
                 </div>
               </div>
             </div>
