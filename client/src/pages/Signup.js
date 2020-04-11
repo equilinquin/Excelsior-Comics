@@ -16,29 +16,20 @@ function Signup() {
   user? <Redirect to='/home'/> :
     <div className="container">
 
-      <div className="row">
-        <div className="col s12"></div>
-          <h2>Welcome to Excelsior Comics!</h2>
-      </div>
+      <div className="row" style={{paddingTop: "30px"}}>
+        <div className="col s12 m6">
+          <h3>Create a New Account</h3>
+          <p>Excelsior Comics is your one stop shop for all things Marvel comics. Sign up for a free account to save your discoveries to your reading list and keep track of your favorite titles and characters.</p>
+          <p className="">Already have an account? Log in <Link to="/login">here</Link></p>
+          <p className="">Click <Link to="/home">here</Link> to explore as a guest</p>
+        </div>
 
-      <div className="row">
-        <div className="col s12"></div>
-          <p>Your one stop shop for all things comics and manga. Please fill out
-            the form to help us better customize your discovery platform and
-            community experience!</p>
-      </div>
-
-      <SignupCard
-        handleSubmit={onSubmit}
-   />
-
-      <div>
-        <h5>Already have an account? Log in <Link to="/login">here</Link></h5>
-        <h5>Click <Link to="/home">here</Link> to explore as a guest</h5>
+        <div className="col s12 m6">
+          <SignupCard handleSubmit={onSubmit}/>
+        </div>
       </div>
 
     </div>
-
   );
 }
 

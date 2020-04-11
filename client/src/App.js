@@ -15,7 +15,6 @@ function App() {
     <Router>
       <Switch>
         <contextStore.Provider value={{user:user, setUser:setUser}}>
-        <div id="page-container">
           <div id="content-wrap">
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />
@@ -24,8 +23,6 @@ function App() {
             <Route exact path="/profile" component={Profile} />
           </div>
         <Footer />
-        </div>
-        
       </contextStore.Provider> 
       </Switch>
     </Router>
