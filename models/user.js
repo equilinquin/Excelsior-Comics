@@ -24,10 +24,17 @@ const UserSchema = new Schema({
     },
     favorites: {
         type: Object,
+<<<<<<< HEAD
         default: {
             comics: [],
             characters: []
         }
+=======
+        default: [
+            comics: [],
+            characters: []
+        ]
+>>>>>>> master
   },
 
   userCreated: {
