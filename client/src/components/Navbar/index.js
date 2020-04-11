@@ -4,9 +4,19 @@ import "./style.css";
 
 function Navbar({ handleSearch }) {
   return (
-    <div class="nav-wrapper">
+
+    <div className="nav-wrapper">
       <h1>
-        Excelsior Comics <a className="navbar-brand" href="/"></a>
+        {" "}
+        <Link className="navbar-brand" to="/login">
+          {" "}
+          Excelsior Comics
+        </Link>
+
+//     <div class="nav-wrapper">
+//       <h1>
+//         Excelsior Comics <a className="navbar-brand" href="/"></a>
+
       </h1>
       <ul id="nav-mobile" className="hangar">
         <li>

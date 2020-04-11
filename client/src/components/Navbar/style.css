@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Teko:500');
 
 .nav-wrapper {
-      height:20%;
+      height:auto;
       width:100%;
       left:0px;
       top:0px;
-      background-color:#0e1015;
+      background-color:#740d1b;
+
+/*       height:20%;
+      width:100%;
+      left:0px;
+      top:0px;
+      background-color:#0e1015; */
+
       position:fixed;
       border-bottom:1vmin solid #d3c8bd;
 }
@@ -21,6 +28,7 @@
       padding-right:6vmin;
       padding-left:1vmin;
       top:-5vmin;
+      left: 5%;
       padding-top:1vmin;
       padding-bottom:0vmin;
       position:relative;
@@ -29,7 +37,7 @@
 #nav-mobile.hangar {
       position:relative;
       display:inline-block;
-      left:10%;
+      left: 50%;
       top: -15%;
       border:0.01vmin solid #d3c8bd;
       font-family: Teko;
