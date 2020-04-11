@@ -14,16 +14,19 @@
       background-color:#0e1015; */
 
       position:fixed;
-      border-bottom:1vmin solid #d3c8bd;
+      border-bottom:1vmin solid #a58e25;
+}
+#title {
+      color: rgb(47, 75, 134);
 }
 
 
 .nav-wrapper h1 {
       font-size:12vmin;
-      color:#d3c8bd;
+      color: #a58e25;
       font-family:'Teko';
       font-weight:100;
-      border-right:1vmin solid #d3c8bd;
+      border-right:1vmin solid #a58e25;
       display:inline-block;
       padding-right:6vmin;
       padding-left:1vmin;
@@ -34,17 +37,22 @@
       position:relative;
 }
 
+#links {
+      color: rgb(67, 93, 151);
+      font-size: 16px;
+}
+
 #nav-mobile.hangar {
       position:relative;
       display:inline-block;
       left: 50%;
       top: -15%;
-      border:0.01vmin solid #d3c8bd;
+      border:0.01vmin solid #a58e25;
       font-family: Teko;
       font-size:3vmin;
       margin-right:1vmin;
       text-decoration:none;
-      color:#d3c8bd;
+      color:#a58e25;
       width:10%;
       text-align:center;
       padding-top:2vmin;

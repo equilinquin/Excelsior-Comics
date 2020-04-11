@@ -35,7 +35,7 @@ export default class Home extends Component {
 
             <div className="container row">
               <div className="col s12">
-                <h5 className="center-align">
+                <h5 className="center-align" id="search-type">
                   Start searching by character or title:
                 </h5>
                 <Search handleSearch={this.state.handleSearch} />
