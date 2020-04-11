@@ -23,8 +23,11 @@ const UserSchema = new Schema({
         required: true
     },
     favorites: {
-        type: Array,
-        default: []
+        type: Object,
+        default: {
+            comics: [],
+            characters: []
+        }
   },
 
   userCreated: {
