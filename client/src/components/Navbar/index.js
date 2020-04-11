@@ -1,14 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
+import M from "materialize-css/dist/js/materialize.min.js";
 import { Link } from "react-router-dom";
+import "materialize-css/dist/css/materialize.min.css";
 import "./style.css";
 
-function Navbar({ handleSearch }) {
-  return (
+class Navbar extends Component {
+
+  componentDidMount() {
+    var elem = document.querySelector(".sidenav");
+    var instance = M.Sidenav.init(elem, {
+        edge: "left",
+        inDuration: 250
+    });
+  }
+
+  render() {
+    return(
     <div>
 
       <nav>
         <div className="nav-wrapper">
-          <a className="brand-logo" id="app-logo"><Link to="/home">Excelsior Comics</Link></a>
+          <p className="brand-logo" id="app-logo"><Link to="/home">Excelsior Comics</Link></p>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link className="navbar-brand navLink" to="/profile">Profile</Link></li>
@@ -27,6 +39,7 @@ function Navbar({ handleSearch }) {
     </div>
 
   );
+  }
 }
 
 export default Navbar;
