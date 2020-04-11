@@ -17,10 +17,8 @@ function SignupCard({handleSubmit}) {
 
   return (
     <form onSubmit={(e)=>{e.preventDefault();submitForm()}}>
-      <div className="col s12 m6">
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
-            <span className="card-title">Sign Up</span>
             <div className="col s12"></div>
             <div className="row">
               <div className="input-field col s6">
@@ -100,11 +98,10 @@ function SignupCard({handleSubmit}) {
               type="submit"
               name="action"
             >
-              Submit
+              Sign Up
             </button>
           </div>
         </div>
-      </div>
     </form>
   );
 }
