@@ -25,7 +25,7 @@ function ComicCards({ sortedComics }) {
                 <div className="card-content">
                 <p>Series</p>
                 <div className="card-content" style={{minHeight: "200px"}}>
-                  <p>Title: {result.title}</p>
+                  {/* <p>Title: {result.title}</p> */}
                   <p>Series: {result.series.name}</p>
                   <p>Issue: {result.issueNumber}</p>
                   <p>Writer: {result.creators.items[0].name}</p>
@@ -39,7 +39,7 @@ function ComicCards({ sortedComics }) {
           })
         ) : (
           <div className="container">
-            <h3>No results</h3>
+            <h4 className="center-align">No results</h4>
           </div>
         )}
     </div>
