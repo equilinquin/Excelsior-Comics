@@ -10,12 +10,10 @@ function Login() {
 
   const handleChange = (event) => {
     const {name, value} = event.target;
-    console.log(name,value)
     setInputState({ ...inputState, [name]: value });
   };
   const handleSubmit = data => {
     API.login(data).then(res=>{
-      console.log(res.config)
       setUser({user:res.config.data})
     })}
 
