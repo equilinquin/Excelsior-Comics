@@ -2,7 +2,7 @@
   "name": "project-3",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "jquery": "3.4.1",
     "material-design-icons": "3.0.1",
