@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Search from "../components/Search/index";
 import ComicCards from "../components/ComicCards/index";
 // import "../styles/home.css"
@@ -52,8 +51,6 @@ export default class Home extends Component {
         <div className="row">
           <ComicCards sortedComics={this.state.sortedComics} />
         </div>
-
-        <Footer />
 
       </div>    
     );
