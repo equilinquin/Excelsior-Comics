@@ -25,19 +25,19 @@ router.post("/signup", function (req, res, next) {
 });
 
 router.post("/login", 
-// (req, res, next) => {
-  //     console.log(req.body);
+(req, res, next) => {
+      console.log(req.body);
   
-  //     const email = req.body.email;
-  //     // Issue token
-  //     const payload = { email };
-  //     const token = jwt.sign(payload, secret, {
-  //       expiresIn: '24h'
-  //     });
-  //     res.cookie('token', token, { httpOnly: true })
-  //       .sendStatus(200);
-  //     next();
-  // },
+      const email = req.body.email;
+      // Issue token
+      const payload = { email };
+      const token = jwt.sign(payload, secret, {
+        expiresIn: '24h'
+      });
+      res.cookie('token', token, { httpOnly: true })
+        .sendStatus(200);
+      next();
+  },
 passport.authenticate("local"), function (req, res) {
   console.log("login success");
   res.redirect("/");
