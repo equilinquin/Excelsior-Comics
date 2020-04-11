@@ -16,7 +16,10 @@ export default class Home extends Component {
         e.preventDefault();
         console.log(e.target.value);
         const search = document.getElementById("searchTerm").value;
-        marvel.getComics(search, (APIresults) => {
+        marvel.getComics(search, (err, APIresults) => {
+          if (err) {
+            return console.log(err);
+          }
           console.log(APIresults);
           this.setState({ ...this.state, sortedComics: APIresults });
         });
