@@ -3,3 +3,12 @@ form.form-inline {
     width: 960px;
     height: fit-content;
 }
+
+#searchTerm {
+    color:goldenrod;
+}
+
+#btn-text {
+    color: rgb(30, 54, 105);
+    background: goldenrod;
+}

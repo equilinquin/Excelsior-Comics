@@ -29,14 +29,21 @@ export default class Home extends Component {
       <div>
 
         <Navbar />
+            <div className="container row">
+              <div className="col s12">
+                <h5 className="center-align" id="search-type">
+                  Start searching by character or title:
+                </h5>
+                <Search handleSearch={this.state.handleSearch} />
+              </div>
+//         <div className="container">
 
-        <div className="container">
+//           <div className="row">
+//             <div className="col s12">
+//               <h5 className="center-align" style={{marginTop: "35px"}}>
+//                 Search by keyword and click <a className="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a> to add a title to your reading list!
+//               </h5>
 
-          <div className="row">
-            <div className="col s12">
-              <h5 className="center-align" style={{marginTop: "35px"}}>
-                Search by keyword and click <a className="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a> to add a title to your reading list!
-              </h5>
             </div>
           </div>
 
