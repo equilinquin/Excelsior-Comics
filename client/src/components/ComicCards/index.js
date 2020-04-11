@@ -8,7 +8,7 @@ function ComicCards({ sortedComics }) {
       {/* //conditional with statement and question mark to check and see if something is in array */}
       {/* //below is kind of like a mini if else statement */}
       {/* // below that is what to do */}
-        {sortedComics !== undefined && sortedComics[0].title !== undefined ? (
+        {sortedComics.length > 0 ? (
           sortedComics.map( (result) => {
           //{character.name}
           //img src={image.url} however it's phrased
@@ -17,11 +17,11 @@ function ComicCards({ sortedComics }) {
           let link = `${result.urls[0].url}`;
           //let buyLink = `${result.urls[1].url}`;
           return (
-            <div className="col s6 m4 l3">
+            <div className="col s6 m4 l3" key={result.id}>
               <div className="card">
                 <div className="card-image">
                   <a href={link}><img src={url} alt={altText}/></a>
-                  <Link className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></Link>
+                  <Link className="btn-floating halfway-fab waves-effect waves-light red" to=""><i className="material-icons">add</i></Link>
                 </div>
                 <div className="card-content" style={{minHeight: "200px"}}>
                   {/* <p>Title: {result.title}</p> */}
@@ -31,7 +31,6 @@ function ComicCards({ sortedComics }) {
                 </div>
               </div>
             </div>
-
             );
           })
         ) : (

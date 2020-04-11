@@ -8,7 +8,6 @@ function callApi(api, param, cb) {
     fetch(`${baseUrl}/api/${api}/${param}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             cb(null, data);
         })
         .catch(error => cb(error));
