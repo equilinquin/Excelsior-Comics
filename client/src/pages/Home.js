@@ -11,15 +11,11 @@ export default class Home extends Component {
     super();
     this.state = {
       order: "ascending",
-      sortedComics: [{}],
+      sortedComics: [],
       handleSearch: (e) => {
         e.preventDefault();
-        console.log(e.target.value);
         const search = document.getElementById("searchTerm").value;
         marvel.getComics(search, (err, APIresults) => {
-          if (err) {
-            return console.log(err);
-          }
           console.log(APIresults);
           this.setState({ ...this.state, sortedComics: APIresults });
         });
@@ -37,7 +33,7 @@ export default class Home extends Component {
 
            <div className="row">
             <div className="col s12">
-              <h5 className="center-align" style={{marginTop: "35px"}}>Search by keyword and click <a className="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a> to add a title to your reading list!</h5>
+              <h5 className="center-align" style={{marginTop: "35px"}}>Search by keyword and click <a className="btn-floating waves-effect waves-light red"><i className="material-icons">add</i></a> to add a title to your reading list!</h5>
             </div>
           </div>
 
