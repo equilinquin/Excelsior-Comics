@@ -1,10 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useContext} from "react";
+import { Link,Redirect } from "react-router-dom";
 import SignupCard from "../components/SignupCard";
 import "./style.css";
+import API from '../utils/login-api'
+import contextStore from '../utils/contextStore'
 
 function Signup() {
+  const {setUser, user} = useContext(contextStore)
+  const onSubmit = data => {
+    API.signup(data).then(res=>{
+      setUser({user: res.data._doc})
+    })}
+
   return (
+  user? <Redirect to='/home'/> :
     <div className="container">
 
       <div className="row">
@@ -19,7 +28,9 @@ function Signup() {
             community experience!</p>
       </div>
 
-      <SignupCard />
+      <SignupCard
+        handleSubmit={onSubmit}
+   />
 
       <div>
         <h5>Already have an account? Log in <Link to="/login">here</Link></h5>
