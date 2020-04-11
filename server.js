@@ -142,6 +142,11 @@ app.post("/api/favorites/comics", (req, res) => {
   });
 });
 
+// Get all favorite comics
+app.get("/api/favorites/comics", (req, res) => {
+  res.json(User.favorites.comics);
+});
+
 // Send every other request to the React app
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
