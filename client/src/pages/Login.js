@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "../styles/home.css";
+// import "../styles/login.css";
 
 function Login() {
   return (
@@ -28,7 +28,7 @@ function Login() {
           </div>
           <div className="row">
             <div className="input-field col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Log In</button>
+              <button className="btn waves-effect waves-light" type="submit" name="action">Log In</button>
             </div>
             <div className="input-field col s12">
               <h5>Don't have an account yet? Sign up <Link to="/signup">here</Link></h5>

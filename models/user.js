@@ -22,15 +22,19 @@ const UserSchema = new Schema({
         unique: true,
         required: true
     },
-    favorites: {
-        type: Array,
-        default: []
-  },
 
-  userCreated: {
-    type: Date,
-    default: Date.now
-  },
+    favorites: {
+        type: Object,
+        default: {
+            comics: [],
+            characters: []
+        }
+    },
+
+    userCreated: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 UserSchema.plugin(passportLocalMongoose);

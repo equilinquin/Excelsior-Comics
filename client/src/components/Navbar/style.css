@@ -37,9 +37,15 @@
       position:relative;
 }
 
+
 #links {
       color: rgb(67, 93, 151);
       font-size: 16px;
+
+#app-logo {
+      font-family:'Teko';
+      margin: 0;
+
 }
 
 #nav-mobile.hangar {
@@ -76,7 +82,3 @@ transition: all 0.3s ease-in-out;
 -o-transition: all 0.3s ease-in-out;
 transition: all 0.3s ease-in-out;
 }
-
-
-
-

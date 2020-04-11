@@ -1,0 +1,25 @@
+#footer {
+    color: white;
+    background-color: #005082;
+    position: absolute;
+    bottom: 0;
+    height: 4rem;
+    margin-top: 25px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+#copyright {
+    font-size: small;
+    font-family: 'Alata', sans-serif;
+    margin: 21px;
+}
+
+.footerLink {
+    color: white;
+}
+
+.footerLink:hover {
+    text-decoration: none;
+    color: white;
+}

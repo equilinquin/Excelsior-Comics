@@ -12,7 +12,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 // Configure Express app
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 // Define middleware 
 app.use(express.urlencoded({ extended: true }));
@@ -140,6 +140,11 @@ app.post("/api/favorites/comics", (req, res) => {
       res.json(savedResult);
     });
   });
+});
+
+// Get all favorite comics
+app.get("/api/favorites/comics", (req, res) => {
+  res.json(User.favorites.comics);
 });
 
 // Send every other request to the React app
