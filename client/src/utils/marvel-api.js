@@ -7,7 +7,10 @@ function callApi(api, param, cb) {
     param = encodeURIComponent(param.trim());
     fetch(`${baseUrl}/api/${api}/${param}`)
         .then(response => response.json())
-        .then(data => cb(null, data))
+        .then(data => {
+            console.log(data);
+            cb(null, data);
+        })
         .catch(error => cb(error));
 }
 
