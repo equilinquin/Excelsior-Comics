@@ -7,9 +7,8 @@ function callApi(api, param, cb) {
     param = encodeURIComponent(param.trim());
     fetch(`${baseUrl}/api/${api}/${param}`)
         .then(response => response.json())
-        .then(data => {
-            return cb(data);
-        });
+        .then(data => cb(null, data))
+        .catch(error => cb(error));
 }
 
 const marvelApi = {
@@ -19,7 +18,7 @@ const marvelApi = {
     },
 
     // Search for comics by title
-    getComics: function(title, cb) {
+    getComics: function (title, cb) {
         callApi("comics/title", title, cb);
     }
 };
