@@ -1,9 +1,9 @@
 .body {
     background: linear-gradient(-45deg, #5a0c17, #941f1f, #d66b23, #ddda1b);
-    background-size: auto;
-    min-height: max-content;
+    /* background-size: auto; */
+    /* min-height: max-content; */
     animation: gradient 15s ease infinite;
-    padding-top: 15%;
+    /* padding-top: 15%; */
     
 }
 
