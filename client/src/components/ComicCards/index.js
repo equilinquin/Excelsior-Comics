@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
 import notAvailable from "./notAvailable.png";
 
 function ComicCards({ sortedComics }) {
@@ -21,7 +20,7 @@ function ComicCards({ sortedComics }) {
           if (!`${result.images}`) {
             console.log(result.creators)
             return (
-              <div className="col s6 m4 l3" key={result.id}>
+              <div className="col s6 m4 l3" key={result.id} style={{minHeight: "560px"}}>
                 <div className="card">
                   <div className="card-image">
                     <a href={link}>
@@ -35,7 +34,7 @@ function ComicCards({ sortedComics }) {
                       <i className="material-icons">add</i>
                     </Link>
                   </div>
-                  <div className="card-content" style={{ minHeight: "200px" }}>
+                  <div className="card-content">
                     {/* <p>Title: {result.title}</p> */}
                     <p>Series: {series}</p>
                     <p>Issue: {result.issueNumber}</p>
@@ -45,15 +44,15 @@ function ComicCards({ sortedComics }) {
               </div>
             );
           } else {
-             url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
+             url = `${result.images[0].path}/portrait_uncanny.${result.images[0].extension}`;
           }
          // let buyLink = `${result.urls[1].url}`;
           return (
-            <div className="col s6 m4 l3" key={result.id}>
+            <div className="col s6 m4 l3" key={result.id} style={{minHeight: "560px"}}>
               <div className="card">
                 <div className="card-image">
                   <a href={link}>
-                    <img src={url} alt={altText} />
+                    <img src={url} alt={altText} style={{maxHeight: "450px", overflow: "hidden"}} />
                     {/* {imgLink} */}
                   </a>
                   <Link
@@ -63,7 +62,7 @@ function ComicCards({ sortedComics }) {
                     <i className="material-icons">add</i>
                   </Link>
                 </div>
-                <div className="card-content" style={{ minHeight: "200px" }}>
+                <div className="card-content">
                   {/* <p>Title: {result.title}</p> */}
                   <p>Series: {series}</p>
                   <p>Issue: {result.issueNumber}</p>
