@@ -4,30 +4,68 @@ import "./style.css";
 import notAvailable from "./notAvailable.png";
 
 function ComicCards({ sortedComics }) {
+
   return (
     <div>
       {/* //conditional with statement and question mark to check and see if something is in array */}
       {/* //below is kind of like a mini if else statement */}
       {/* // below that is what to do */}
-        {sortedComics.length > 0 ? (
-          sortedComics.map( (result) => {
-          // if (`${result.images.length}` === 0) {
-          //   return url = notAvailable;
-          // } else {
-          //   url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
-          // };
-          let url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
-          let altText = `${result.title}`;
-          let link = `${result.urls[0].url}`;
+      {sortedComics.length > 0? (
+        sortedComics.map((result) => {
+          let url;
+          let altText;
+          let link;
+          // let imgLink = <img src={url} alt={altText} />
+          if (!`${result.images}` || !`${result.series.name}` || !`${result.creators}`) {
+            console.log(result.creators)
+            let series = `${result.series.name}`
+            let writer = (!`${result.creators.items}` ? "Not Available" : `${result.creators.items[0].name}`)
+            return (
+              <div className="col s6 m4 l3" key={result.id}>
+                <div className="card">
+                  <div className="card-image">
+                    <a href={link}>
+                      <img src={notAvailable} alt={altText} />
+                      {/* {imgLink} */}
+                    </a>
+                    <Link
+                      className="btn-floating halfway-fab waves-effect waves-light red"
+                      to=""
+                    >
+                      <i className="material-icons">add</i>
+                    </Link>
+                  </div>
+                  <div className="card-content" style={{ minHeight: "200px" }}>
+                    {/* <p>Title: {result.title}</p> */}
+                    <p>Series: {series}</p>
+                    <p>Issue: {result.issueNumber}</p>
+                    <p>Writer: {writer}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          } else {
+            url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
+            altText = `${result.title}`;
+            link = `${result.urls[0].url}`;
+          }
           //let buyLink = `${result.urls[1].url}`;
           return (
             <div className="col s6 m4 l3" key={result.id}>
               <div className="card">
                 <div className="card-image">
-                  <a href={link}><img src={url} alt={altText}/></a>
-                  <Link className="btn-floating halfway-fab waves-effect waves-light red" to=""><i className="material-icons">add</i></Link>
+                  <a href={link}>
+                    <img src={url} alt={altText} />
+                    {/* {imgLink} */}
+                  </a>
+                  <Link
+                    className="btn-floating halfway-fab waves-effect waves-light red"
+                    to=""
+                  >
+                    <i className="material-icons">add</i>
+                  </Link>
                 </div>
-                <div className="card-content" style={{minHeight: "200px"}}>
+                <div className="card-content" style={{ minHeight: "200px" }}>
                   {/* <p>Title: {result.title}</p> */}
                   <p>Series: {result.series.name}</p>
                   <p>Issue: {result.issueNumber}</p>
@@ -35,13 +73,13 @@ function ComicCards({ sortedComics }) {
                 </div>
               </div>
             </div>
-            );
-          })
-        ) : (
-          <div className="container">
-            <h4 className="center-align">No results</h4>
-          </div>
-        )}
+          );
+        })
+      ) : (
+        <div className="container">
+          <h4 className="center-align">No results</h4>
+        </div>
+      )}
     </div>
   );
 }
