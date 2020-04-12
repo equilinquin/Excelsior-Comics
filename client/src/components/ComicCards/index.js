@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import notAvailable from "./notAvailable.png";
 
 function ComicCards({ sortedComics }) {
   return (
@@ -10,8 +11,11 @@ function ComicCards({ sortedComics }) {
       {/* // below that is what to do */}
         {sortedComics.length > 0 ? (
           sortedComics.map( (result) => {
-          //{character.name}
-          //img src={image.url} however it's phrased
+          // if (`${result.images.length}` === 0) {
+          //   return url = notAvailable;
+          // } else {
+          //   url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
+          // };
           let url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
           let altText = `${result.title}`;
           let link = `${result.urls[0].url}`;
