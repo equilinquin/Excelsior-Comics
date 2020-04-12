@@ -3,6 +3,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { Link } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import "./style.css";
+import API from "../../utils/login-api";
 
 class Navbar extends Component {
 
@@ -25,7 +26,8 @@ class Navbar extends Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link className="navbar-brand navLink" to="/profile">Profile</Link></li>
             <li><Link className="navbar-brand navLink" to="/home">Discover</Link></li>
-            <li><Link className="navbar-brand navLink" to="/login">Log Out</Link></li>
+            <li><Link className="navbar-brand navLink" onClick={API.logout}>Log Out</Link></li>
+            {/* <li><button onClick={API.logout}>LogoutTest</button></li> */}
           </ul>
         </div>
       </nav>
