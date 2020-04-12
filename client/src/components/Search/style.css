@@ -5,10 +5,12 @@ form.form-inline {
 }
 
 #searchTerm {
-    color: #740d1b;
+    color: black;
+    font-weight: bold;
 }
 
 #btn-text {
     color: rgb(30, 54, 105);
     background: goldenrod;
 }
+
