@@ -94,7 +94,7 @@ function SignupCard({handleSubmit}) {
           </div>
           <div className="card-action">
             <button
-              className="btn waves-effect waves-light"
+              className="btn waves-effect waves-light" id="btn"
               type="submit"
               name="action"
             >
