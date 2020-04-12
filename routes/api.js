@@ -60,20 +60,19 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post("/login", 
-(req, res, next) => { 
-      const email = req.body.email;
-      // Issue token
-      const payload = { email };
-      const token = jwt.sign(payload, secret, {
-        expiresIn: '24h'
-      });
-      res.cookie('token', token, { httpOnly: true })
-        .sendStatus(200);
-      next();
-  },
 passport.authenticate("local"), function (req, res) {
-  console.log("login success");
-  res.redirect("/");
+
+    const email = req.body.email;
+    // Issue token
+    const payload = { email };
+    const token = jwt.sign(payload, secret, {
+      expiresIn: '24h'
+    });
+    res.cookie('token', token, { httpOnly: true })
+      .sendStatus(200);
+
+      console.log("login success");
+  //res.redirect("/");
 });
 
 router.get("/logout", function(req, res) {

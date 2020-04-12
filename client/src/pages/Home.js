@@ -4,6 +4,7 @@ import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
 import Search from "../components/Search/index";
 import ComicCards from "../components/ComicCards/index";
+import API from "../utils/login-api";
 // import "../styles/home.css"
 
 export default class Home extends Component {
@@ -21,6 +22,10 @@ export default class Home extends Component {
         });
       },
     };
+  }
+
+  componentDidMount() {
+    return API.isLoggedIn
   }
 
   render() {
