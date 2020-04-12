@@ -1,7 +1,8 @@
 // Client side interface for Node server comic search API
 
 // change this variable appropriately depending on which environment you're running this script in
-const baseUrl = "http://localhost:3001";
+// const baseUrl = "http://localhost:3001";
+const baseUrl = "https://api.mlab.com/api/1";
 
 function callApi(api, param, cb) {
     param = encodeURIComponent(param.trim());
