@@ -16,10 +16,10 @@
       position:fixed;
       border-bottom:1vmin solid #a58e25;
 }
+
 #title {
       color: rgb(47, 75, 134);
 }
-
 
 .nav-wrapper h1 {
       font-size:12vmin;
@@ -45,8 +45,8 @@
 
 #app-logo {
       font-family: 'Bangers', cursive;
+      padding-left: 2%;
       margin: 0;
-
 }
 
 #nav-mobile.hangar {
@@ -82,4 +82,8 @@ transition: all 0.3s ease-in-out;
 -ms-transition: all 0.3s ease-in-out;
 -o-transition: all 0.3s ease-in-out;
 transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand {
+      font-family: 'Teko', sans-serif;
 }
