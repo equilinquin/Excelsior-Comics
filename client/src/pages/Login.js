@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 import API from "../utils/login-api";
 import contextStore from "../utils/contextStore";
-// import "../styles/login.css";
+import "../styles/login.css";
 
 function Login() {
   const {setUser, user} = useContext(contextStore);
@@ -28,10 +28,10 @@ function Login() {
 
   return (
     user? <Redirect to="/home" />:
-    <div className="container">
+    <div className="container" id="main">
       <div className="row">
         <div className="col s12">
-          <h1 className="title">Welcome to Excelsior Comics!</h1>
+          <h1 className="title" id="title">Welcome to Excelsior Comics!</h1>
           <h3>Discover the world of digital comics.</h3>
           <h3>Happy hunting!</h3>
         </div>
@@ -54,12 +54,12 @@ function Login() {
                 <button
                   className="btn waves-effect waves-light"
                   type="submit"
-                  name="action"
+                  name="action" id="btn"
                 >
                   Log In
                 </button>
               </div>
-              <div className="input-field col s12">
+              <div className="input-field col s12" id="options">
                 <h5>
                   Don't have an account yet? Sign up{" "}
                   <Link to="/signup">here</Link>
