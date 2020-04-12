@@ -28,7 +28,8 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(new LocalStrategy({usernameField: 'email'}, User.authenticate()))
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://administrator:Password123@ds139919.mlab.com:39919/heroku_42xcflqr");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/excelsiordb");
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
