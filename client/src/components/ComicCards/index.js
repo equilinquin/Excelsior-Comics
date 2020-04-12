@@ -13,13 +13,13 @@ function ComicCards({ sortedComics }) {
       {sortedComics.length > 0? (
         sortedComics.map((result) => {
           let url;
-          let altText;
-          let link;
+          let altText = `${result.title}`;
+          let link = `${result.urls[0].url}`;
+          let series = (!`${result.series.name}` ? "Not Available" : `${result.series.name}`)
+          let writer = (!`${result.creators.items}` ? "Not Available" : `${result.creators.items[0].name}`)
           // let imgLink = <img src={url} alt={altText} />
-          if (!`${result.images}` || !`${result.series.name}` || !`${result.creators}`) {
+          if (!`${result.images}`) {
             console.log(result.creators)
-            let series = `${result.series.name}`
-            let writer = (!`${result.creators.items}` ? "Not Available" : `${result.creators.items[0].name}`)
             return (
               <div className="col s6 m4 l3" key={result.id}>
                 <div className="card">
@@ -45,11 +45,9 @@ function ComicCards({ sortedComics }) {
               </div>
             );
           } else {
-            url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
-            altText = `${result.title}`;
-            link = `${result.urls[0].url}`;
+             url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
           }
-          //let buyLink = `${result.urls[1].url}`;
+         // let buyLink = `${result.urls[1].url}`;
           return (
             <div className="col s6 m4 l3" key={result.id}>
               <div className="card">
@@ -67,9 +65,9 @@ function ComicCards({ sortedComics }) {
                 </div>
                 <div className="card-content" style={{ minHeight: "200px" }}>
                   {/* <p>Title: {result.title}</p> */}
-                  <p>Series: {result.series.name}</p>
+                  <p>Series: {series}</p>
                   <p>Issue: {result.issueNumber}</p>
-                  <p>Writer: {result.creators.items[0].name}</p>
+                  <p>Writer: {writer}</p>
                 </div>
               </div>
             </div>
