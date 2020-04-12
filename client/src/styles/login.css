@@ -1,22 +1,52 @@
-.h1 {
-  font-family: "Bangers", sans-serif;
-  color: dkgrey;
-}
-.h1 {
-  font-family: "Bangers";
-  margin: 0 0 -1em 0;
-  text-shadow: -1px -1px yellow, 1px 1px orange,  2px 2px orange;
-  -webkit-transform: rotate(-10deg) skew(-10deg, 0);
-  -moz-transform: rotate(-10deg) skew(-10deg, 0);
-  -ms-transform: rotate(-10deg) skew(-10deg, 0);
-  -o-transform: rotate(-10deg) skew(-10deg, 0);
-  transform: rotate(-10deg) skew(-10deg, 0);
-  padding-bottom: 50px;
-  float: left;
-  width: 100%;
+#title {
+    color: rgb(219, 210, 219);
+    font-family: 'Teko';
+     font-weight: normal 700;
+     text-shadow: rgb(219, 210, 219);
 }
 
-.h1 {
-  font-size: 150px;
-  margin-bottom: -.75em;
+h3 {
+    color: rgb(219, 210, 219);
+      font-weight:500;
 }
+
+
+
+
+#content-wrap {
+    background: linear-gradient(-45deg, #ddda1b, #d66b23,  #941f1f, #740d1b );
+    background-size: 400% 400%;
+    min-height: max-content;
+    animation: gradient 15s ease infinite;
+    /* padding-top: 15%; */
+    
+    }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+
+  
+}
+
+
+
+#btn {
+	background-color:rgb(50, 75, 133);	
+}
+
+#btn:hover {
+	background-color: goldenrod;
+}
+
+#options {
+color:rgb(219, 210, 219);
+}
+
