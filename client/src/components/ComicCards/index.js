@@ -16,8 +16,34 @@ function ComicCards({ sortedComics }) {
           let altText;
           let link;
           // let imgLink = <img src={url} alt={altText} />
-          if (!`${result.images}` || !`${result.series.name}`) {
-          
+          if (!`${result.images}` || !`${result.series.name}` || !`${result.creators}`) {
+            console.log(result.creators)
+            let series = `${result.series.name}`
+            let writer = (!`${result.creators.items}` ? "Not Available" : `${result.creators.items[0].name}`)
+            return (
+              <div className="col s6 m4 l3" key={result.id}>
+                <div className="card">
+                  <div className="card-image">
+                    <a href={link}>
+                      <img src={notAvailable} alt={altText} />
+                      {/* {imgLink} */}
+                    </a>
+                    <Link
+                      className="btn-floating halfway-fab waves-effect waves-light red"
+                      to=""
+                    >
+                      <i className="material-icons">add</i>
+                    </Link>
+                  </div>
+                  <div className="card-content" style={{ minHeight: "200px" }}>
+                    {/* <p>Title: {result.title}</p> */}
+                    <p>Series: {series}</p>
+                    <p>Issue: {result.issueNumber}</p>
+                    <p>Writer: {writer}</p>
+                  </div>
+                </div>
+              </div>
+            );
           } else {
             url = `${result.images[0].path}/portrait_incredible.${result.images[0].extension}`;
             altText = `${result.title}`;
@@ -41,7 +67,7 @@ function ComicCards({ sortedComics }) {
                 </div>
                 <div className="card-content" style={{ minHeight: "200px" }}>
                   {/* <p>Title: {result.title}</p> */}
-                  <p>`Series: {result.series.name}`</p>
+                  <p>Series: {result.series.name}</p>
                   <p>Issue: {result.issueNumber}</p>
                   <p>Writer: {result.creators.items[0].name}</p>
                 </div>
