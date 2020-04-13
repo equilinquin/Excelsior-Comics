@@ -10,19 +10,20 @@ import API from "../utils/login-api";
 class Home extends Component {
   state = {
     order: "ascending",
+    searchString: "",
     sortedComics: []
   };
 
   handleSearch = e => {
     e.preventDefault();
 
-    const search = document.getElementById("searchTerm").value;
-
-    marvel.getComics(search, (err, APIresults) => {
+    marvel.getComics(this.state.searchString, (err, APIresults) => {
       console.log(APIresults);
       this.setState({ ...this.state, sortedComics: APIresults });
     });
   };
+
+  handleChange = e => this.setState({ searchString: e.target.value });
 
   componentDidMount() {
     return API.isLoggedIn
@@ -48,7 +49,11 @@ class Home extends Component {
 
           <div className="row">
             <div className="col s12">
-              <Search handleSearch={this.handleSearch} />
+              <Search
+                searchString={this.state.searchString}
+                handleChange={this.handleChange}
+                handleSearch={this.handleSearch}
+              />
             </div>
           </div>
         </div>
