@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import notAvailable from "./notAvailable.png";
+import AddButton from "../AddButton";
 
 function ComicCards({ sortedComics }) {
 
@@ -27,12 +27,7 @@ function ComicCards({ sortedComics }) {
                       <img src={notAvailable} alt={altText} />
                       {/* {imgLink} */}
                     </a>
-                    <Link
-                      className="btn-floating halfway-fab waves-effect waves-light red"
-                      to=""
-                    >
-                      <i className="material-icons">add</i>
-                    </Link>
+                    <AddButton />
                   </div>
                   <div className="card-content">
                     {/* <p>Title: {result.title}</p> */}
@@ -55,12 +50,7 @@ function ComicCards({ sortedComics }) {
                     <img src={url} alt={altText} style={{maxHeight: "450px", overflow: "hidden"}} />
                     {/* {imgLink} */}
                   </a>
-                  <Link
-                    className="btn-floating halfway-fab waves-effect waves-light red"
-                    to=""
-                  >
-                    <i className="material-icons">add</i>
-                  </Link>
+                  <AddButton />
                 </div>
                 <div className="card-content">
                   {/* <p>Title: {result.title}</p> */}
