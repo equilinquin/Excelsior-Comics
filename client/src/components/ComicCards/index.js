@@ -24,7 +24,7 @@ function ComicCards(props) {
                 <div className="card">
                   <div className="card-image">
                     <a href={link}>
-                      <img src={notAvailable} alt={altText} />
+                      <img src={notAvailable} alt={altText} height="420"/>
                       {/* {imgLink} */}
                     </a>
                     <AddButton

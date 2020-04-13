@@ -29,7 +29,7 @@ class Home extends Component {
     e.preventDefault();
 
     const comicid = e.target.getAttribute("comicid");
-    const addedComic = this.state.sortedComics.find(comic => comic.id == comicid);
+    const addedComic = this.state.sortedComics.find(comic => comic.id === comicid);
     console.log(addedComic);
   };
 
