@@ -5,6 +5,7 @@ function AddButton(props) {
     return (
         <Link
             className="btn-floating halfway-fab waves-effect waves-light red"
+            to=""
         >
             <i className="material-icons"
                 comicid={props.comicid}

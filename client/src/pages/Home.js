@@ -30,7 +30,6 @@ class Home extends Component {
 
     const comicid = e.target.getAttribute("comicid");
     const addedComic = this.state.sortedComics.find(comic => comic.id == comicid);
-    alert("Added comic with ID " + comicid);
     console.log(addedComic);
   };
 
