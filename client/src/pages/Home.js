@@ -25,6 +25,14 @@ class Home extends Component {
 
   handleChange = e => this.setState({ searchString: e.target.value });
 
+  handleAddButtonClick = e => {
+    e.preventDefault();
+
+    const comicid = e.target.getAttribute("comicid");
+    const addedComic = this.state.sortedComics.find(comic => comic.id == comicid);
+    console.log(addedComic);
+  };
+
   componentDidMount() {
     return API.isLoggedIn
   }
@@ -59,7 +67,10 @@ class Home extends Component {
         </div>
 
         <div className="row">
-          <ComicCards sortedComics={this.state.sortedComics} />
+          <ComicCards
+            sortedComics={this.state.sortedComics}
+            handleAddButtonClick={this.handleAddButtonClick}
+          />
         </div>
       </div>
     )
