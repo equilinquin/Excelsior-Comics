@@ -7,22 +7,23 @@ import ComicCards from "../components/ComicCards/index";
 import API from "../utils/login-api";
 // import "../styles/home.css"
 
-export default class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      order: "ascending",
-      sortedComics: [],
-      handleSearch: (e) => {
-        e.preventDefault();
-        const search = document.getElementById("searchTerm").value;
-        marvel.getComics(search, (err, APIresults) => {
-          console.log(APIresults);
-          this.setState({ ...this.state, sortedComics: APIresults });
-        });
-      },
-    };
-  }
+class Home extends Component {
+  state = {
+    order: "ascending",
+    searchString: "",
+    sortedComics: []
+  };
+
+  handleSearch = e => {
+    e.preventDefault();
+
+    marvel.getComics(this.state.searchString, (err, APIresults) => {
+      console.log(APIresults);
+      this.setState({ ...this.state, sortedComics: APIresults });
+    });
+  };
+
+  handleChange = e => this.setState({ searchString: e.target.value });
 
   componentDidMount() {
     return API.isLoggedIn
@@ -48,7 +49,11 @@ export default class Home extends Component {
 
           <div className="row">
             <div className="col s12">
-              <Search handleSearch={this.state.handleSearch} />
+              <Search
+                searchString={this.state.searchString}
+                handleChange={this.handleChange}
+                handleSearch={this.handleSearch}
+              />
             </div>
           </div>
         </div>
@@ -57,6 +62,8 @@ export default class Home extends Component {
           <ComicCards sortedComics={this.state.sortedComics} />
         </div>
       </div>
-    );
+    )
   }
 }
+
+export default Home;
