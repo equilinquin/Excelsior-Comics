@@ -5,16 +5,16 @@ const passport = require("passport");
 const jwt = require('jsonwebtoken');
 const secret = 'appname-secret';
 
-const withAuth = function(req, res, next) {
-  const token = 
-      req.body.token ||
-      req.query.token ||
-      req.headers['x-access-token'] ||
-      req.cookies.token;
+const withAuth = function (req, res, next) {
+  const token =
+    req.body.token ||
+    req.query.token ||
+    req.headers['x-access-token'] ||
+    req.cookies.token;
   if (!token) {
     res.status(401).send('Unauthorized: No token provided');
   } else {
-    jwt.verify(token, secret, function(err, decoded) {
+    jwt.verify(token, secret, function (err, decoded) {
       if (err) {
         res.status(401).send('Unauthorized: Invalid token');
       } else {
@@ -24,8 +24,14 @@ const withAuth = function(req, res, next) {
     });
   }
 }
-router.get("/checkToken", withAuth, function(req, res) {
+router.get("/checkToken", withAuth, function (req, res) {
   res.sendStatus(200);
+});
+
+// Add a comic to favorites
+router.post("/api/favorites/comics", (req, res) => {
+  const { email, comic } = req.body;
+  res.json({ email: email, comic: comic });
 });
 
 router.post("/signup", (req, res, next) => {
@@ -48,16 +54,16 @@ router.post("/signup", (req, res, next) => {
       username: req.body.email,
     }),
     req.body.password,
-    function (err,user) {
+    function (err, user) {
       if (err) {
         console.log("error while user register!", err);
         return next(err);
       }
       console.log("user registered!");
-      return res.json({...user, salt:null, hash:null});
-      
+      return res.json({ ...user, salt: null, hash: null });
+
     }
-    
+
   );
 });
 
@@ -67,8 +73,8 @@ router.get('/user_data', (req, res) => {
   })
 })
 
-router.post("/login", 
-passport.authenticate("local"), function (req, res) {
+router.post("/login",
+  passport.authenticate("local"), function (req, res) {
 
     const email = req.body.email;
     // Issue token
@@ -79,11 +85,11 @@ passport.authenticate("local"), function (req, res) {
     res.cookie('token', token, { httpOnly: true })
       .sendStatus(200);
 
-      console.log("login success");
-  //res.redirect("/");
-});
+    console.log("login success");
+    //res.redirect("/");
+  });
 
-router.get("/logout", function(req, res) {
+router.get("/logout", function (req, res) {
   res.clearCookie('token').send('cookie has been deleted');
 });
 
