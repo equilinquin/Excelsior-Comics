@@ -16,8 +16,11 @@ class Home extends Component {
 
   handleSearch = e => {
     e.preventDefault();
-    this.getUserInfo();
+
     marvel.getComics(this.state.searchString, (err, APIresults) => {
+      if (err) {
+        return console.error(err);
+      }
       console.log(APIresults);
       this.setState({ ...this.state, sortedComics: APIresults });
     });
@@ -32,12 +35,15 @@ class Home extends Component {
     const addedComic = this.state.sortedComics.find(comic => comic.id === comicid);
     console.log(addedComic);
   };
-getUserInfo = data => {
-  console.log(data);
-  // API.getUsers(data).then(res =>{
-  //   console.log(res)
-  // })
-}
+
+  getUserInfo = data => {
+    API.getUsers((err, res) => {
+      if (err) {
+        return console.error(err);
+      }
+      console.log(res);
+    });
+  }
 
   componentDidMount() {
     this.getUserInfo();
