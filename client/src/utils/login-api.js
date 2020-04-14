@@ -31,6 +31,6 @@ logout: function() {
     return axios.post("/user/signup", newUser);
   },
   getUsers: () => {
-    return axios.get("/user/signup");
+    axios.get("/user/user_data");
   }
-};
+}

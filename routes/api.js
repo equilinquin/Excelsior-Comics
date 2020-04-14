@@ -54,10 +54,18 @@ router.post("/signup", (req, res, next) => {
         return next(err);
       }
       console.log("user registered!");
-      res.json({...user, salt:null, hash:null})
+      return res.json({...user, salt:null, hash:null});
+      
     }
+    
   );
 });
+
+router.get('/signup', (req, res) => {
+  User.findOne({ email: req.body.email }).then(data => {
+    res.json(data);
+  })
+})
 
 router.post("/login", 
 passport.authenticate("local"), function (req, res) {
@@ -79,34 +87,6 @@ router.get("/logout", function(req, res) {
   res.clearCookie('token').send('cookie has been deleted');
 });
 
-// router.get("/logout", function (req, res) {
-//   req.logout();
-//   res.redirect("/");
-// });
 
 module.exports = router;
 
-
-// router.post('/login', (req, res, next) => {
-//     console.log(req.body);
-
-//     const email = req.body.email;
-//     // Issue token
-//     const payload = { email };
-//     const token = jwt.sign(payload, secret, {
-//       expiresIn: '1h'
-//     });
-//     res.cookie('token', token, { httpOnly: true })
-//       .sendStatus(200);
-//     next();
-// },
-//     passport.authenticate("local"),
-//     (req, res) => {
-//         console.log(req.user);
-//         let userInfo = {
-//             email: req.user.email,
-//             password: req.user.password
-//         };
-//         res.send(userInfo);
-//     }
-// )

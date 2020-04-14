@@ -20,11 +20,17 @@ function Login() {
   const submitForm = () => {
     if (inputState.email && inputState.password) {
       handleSubmit(inputState);
+      getUser(inputState.email)
       console.log("login confirmed");
     } else {
       console.log("this account does not exist");
     }
   };
+
+  const getUser = item => {
+    console.log(item);
+    API.getUsers(item);
+  }
 
   return (
     user? <Redirect to="/home" />:

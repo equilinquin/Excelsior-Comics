@@ -16,7 +16,7 @@ class Home extends Component {
 
   handleSearch = e => {
     e.preventDefault();
-
+    this.getUserInfo();
     marvel.getComics(this.state.searchString, (err, APIresults) => {
       console.log(APIresults);
       this.setState({ ...this.state, sortedComics: APIresults });
