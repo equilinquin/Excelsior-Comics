@@ -10,12 +10,11 @@ import contextStore from './utils/contextStore'
 
 function App() {
 
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState(null)
   return (
     <Router>
       <Switch>
         <contextStore.Provider value={{user:user, setUser:setUser}}>
-          {console.log(user)}
           <div id="content-wrap">
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />

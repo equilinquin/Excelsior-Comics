@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import API from "../utils/login-api";
 import contextStore from "../utils/contextStore";
 import "../styles/login.css";
-import { get } from "mongoose";
 
 function Login() {
   const {setUser, user} = useContext(contextStore);
@@ -15,29 +14,17 @@ function Login() {
   };
   const handleSubmit = data => {
     API.login(data).then(res=>{
-      getUser();
-      setUser({user:user})
+      setUser({user:res.config.data})
     })}
 
   const submitForm = () => {
     if (inputState.email && inputState.password) {
       handleSubmit(inputState);
-      getUser();
       console.log("login confirmed");
     } else {
       console.log("this account does not exist");
     }
   };
-
-  const getUser = () => {
-    const email ={
-      'email' : inputState.email,
-    } 
-    
-    API.getUsers(email).then(res => {
-      setUser({user: res.data});
-    });
-  }
 
 
   return (
