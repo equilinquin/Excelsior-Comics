@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import ComicCards from "../components/ComicCards";
 import API from "../utils/login-api";
+import favoritesApi from "../utils/favorites-api";
 // import "../styles/home.css"
 
 class Home extends Component {
@@ -16,7 +17,6 @@ class Home extends Component {
 
   handleSearch = e => {
     e.preventDefault();
-    this.getUserInfo();
     marvel.getComics(this.state.searchString, (err, APIresults) => {
       console.log(APIresults);
       this.setState({ ...this.state, sortedComics: APIresults });
@@ -30,7 +30,10 @@ class Home extends Component {
 
     const comicid = e.target.getAttribute("comicid");
     const addedComic = this.state.sortedComics.find(comic => comic.id.toString() === comicid);
-    console.log(addedComic);
+    favoritesApi.addFavoriteComic(addedComic, (err, response) => {
+      console.log(response);
+    })
+
   };
 
   componentDidMount() {
