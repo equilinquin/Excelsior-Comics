@@ -31,8 +31,6 @@ logout: function() {
     return axios.post("/user/signup", newUser);
   },
   getUsers: () => {
-    fetch(`http://localhost:3001/user/signup`, {
-    })
-        .then(response => response.json())
+    axios.get("/user/user_data");
   }
-};
+}

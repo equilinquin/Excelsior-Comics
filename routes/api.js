@@ -62,7 +62,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get('/signup', (req, res) => {
-  User.find({}).then(data => {
+  User.findOne({ email: req.body.email }).then(data => {
     res.json(data);
   })
 })

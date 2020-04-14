@@ -33,14 +33,7 @@ class Home extends Component {
     console.log(addedComic);
   };
 
-  getUserinfo = data => {
-    API.getUsers(data).then(res => {
-      console.log(res.config.data)
-    })
-  }
-
   componentDidMount() {
-    this.getUserinfo();
     return API.isLoggedIn
   }
 
