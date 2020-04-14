@@ -54,14 +54,15 @@ router.post("/signup", (req, res, next) => {
         return next(err);
       }
       console.log("user registered!");
-      return res.json({...user, salt:null, hash:null});
+      res.redirect(307, "/login")
+      res.json({...user, salt:null, hash:null});
       
     }
     
   );
 });
 
-router.get('/signup', (req, res) => {
+router.get('/user_data', (req, res) => {
   User.find({}).then(data => {
     res.json(data);
   })

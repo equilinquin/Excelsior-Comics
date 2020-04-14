@@ -32,15 +32,15 @@ class Home extends Component {
     const addedComic = this.state.sortedComics.find(comic => comic.id === comicid);
     console.log(addedComic);
   };
-
-  getUserinfo = data => {
-    API.getUsers(data).then(res => {
-      console.log(res.config.data)
-    })
-  }
+getUserInfo = data => {
+  console.log(data);
+  // API.getUsers(data).then(res =>{
+  //   console.log(res)
+  // })
+}
 
   componentDidMount() {
-    this.getUserinfo();
+    this.getUserInfo();
     return API.isLoggedIn
   }
 
