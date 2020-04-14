@@ -2,8 +2,8 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
-import Search from "../components/Search/index";
-import ComicCards from "../components/ComicCards/index";
+import Search from "../components/Search";
+import ComicCards from "../components/ComicCards";
 import API from "../utils/login-api";
 // import "../styles/home.css"
 
