@@ -9,11 +9,13 @@ function Signup() {
   const {setUser, user} = useContext(contextStore)
   const onSubmit = data => {
     API.signup(data).then(res=>{
-      setUser({user: res.data._doc})
+      setUser({user: res.config.data});
+
     })}
 
   return (
   user? <Redirect to='/home'/> :
+
     <div className="container">
 
       <div className="row" style={{paddingTop: "30px"}}>
@@ -30,6 +32,7 @@ function Signup() {
       </div>
 
     </div>
+    
   );
 }
 

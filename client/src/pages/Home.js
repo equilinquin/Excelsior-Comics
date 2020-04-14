@@ -5,75 +5,81 @@ import Navbar from "../components/Navbar";
 import Search from "../components/Search/index";
 import ComicCards from "../components/ComicCards/index";
 import API from "../utils/login-api";
+import contextStore from "../utils/contextStore";
 // import "../styles/home.css"
 
 class Home extends Component {
   state = {
     order: "ascending",
     searchString: "",
-    sortedComics: []
+    sortedComics: [],
   };
 
-  handleSearch = e => {
+  handleSearch = (e) => {
     e.preventDefault();
-    this.getUserInfo();
     marvel.getComics(this.state.searchString, (err, APIresults) => {
       console.log(APIresults);
       this.setState({ ...this.state, sortedComics: APIresults });
     });
   };
 
-  handleChange = e => this.setState({ searchString: e.target.value });
+  handleChange = (e) => this.setState({ searchString: e.target.value });
 
-  handleAddButtonClick = e => {
+  handleAddButtonClick = (e) => {
     e.preventDefault();
 
     const comicid = e.target.getAttribute("comicid");
-    const addedComic = this.state.sortedComics.find(comic => comic.id === comicid);
+    const addedComic = this.state.sortedComics.find(
+      (comic) => comic.id === comicid
+    );
     console.log(addedComic);
   };
 
   componentDidMount() {
-    return API.isLoggedIn
+    return API.isLoggedIn;
   }
 
   render() {
     return (
-      <div>
-        <Navbar />
+      <contextStore.Consumer>
+        {props => (
+          <div>
+            <Navbar />
+            <div className="container">
+              {console.log(props.user)}
+              <div className="row">
+                <div className="col s12">
+                  <h5 className="center-align" style={{ marginTop: "35px" }}>
+                    Search by keyword and click{" "}
+                    <a className="btn-floating waves-effect waves-light red">
+                      <i className="material-icons">add</i>
+                    </a>{" "}
+                    to add a title to your reading list!
+                  </h5>
+                </div>
+              </div>
 
-        <div className="container">
-          <div className="row">
-            <div className="col s12">
-              <h5 className="center-align" style={{ marginTop: "35px" }}>
-                Search by keyword and click{" "}
-                <a className="btn-floating waves-effect waves-light red">
-                  <i className="material-icons">add</i>
-                </a>{" "}
-                to add a title to your reading list!
-              </h5>
+              <div className="row">
+                <div className="col s12">
+                  <Search
+                    searchString={this.state.searchString}
+                    handleChange={this.handleChange}
+                    handleSearch={this.handleSearch}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className="row">
-            <div className="col s12">
-              <Search
-                searchString={this.state.searchString}
-                handleChange={this.handleChange}
-                handleSearch={this.handleSearch}
+            <div className="row">
+              <ComicCards
+                sortedComics={this.state.sortedComics}
+                handleAddButtonClick={this.handleAddButtonClick}
               />
             </div>
           </div>
-        </div>
-
-        <div className="row">
-          <ComicCards
-            sortedComics={this.state.sortedComics}
-            handleAddButtonClick={this.handleAddButtonClick}
-          />
-        </div>
-      </div>
-    )
+        )}
+      </contextStore.Consumer>
+    );
   }
 }
 

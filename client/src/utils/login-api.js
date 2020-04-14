@@ -30,7 +30,7 @@ logout: function() {
   signup: function(newUser) {
     return axios.post("/user/signup", newUser);
   },
-  getUsers: () => {
-    axios.get("/user/user_data");
+  getUsers: (email) => {
+    return axios.post("/user/user_data", email);
   }
 }
