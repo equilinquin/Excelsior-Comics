@@ -19,6 +19,7 @@
 
 #title {
       color: rgb(47, 75, 134);
+
 }
 
 .nav-wrapper h1 {
@@ -41,12 +42,14 @@
 #links {
       color: rgb(67, 93, 151);
       font-size: 16px;
+      -webkit-text-stroke: 0.2px black;
 }
 
 #app-logo {
       font-family: 'Bangers', cursive;
       padding-left: 2%;
       margin: 0;
+      -webkit-text-stroke: 0.2px black;
 }
 
 #nav-mobile.hangar {
@@ -85,5 +88,6 @@ transition: all 0.3s ease-in-out;
 }
 
 .navbar-brand {
-      font-family: 'Teko', sans-serif;
+      font-family: 'Bangers', cursive;
+      -webkit-text-stroke: 0.2px black;
 }

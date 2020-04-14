@@ -22,7 +22,7 @@ function Login() {
   const submitForm = () => {
     if (inputState.email && inputState.password) {
       handleSubmit(inputState);
-      // getUser();
+      getUser();
       console.log("login confirmed");
     } else {
       console.log("this account does not exist");
@@ -38,6 +38,7 @@ function Login() {
       setUser({user: res.data});
     });
   }
+
 
   return (
     user? <Redirect to="/home" />:
@@ -73,13 +74,13 @@ function Login() {
                 </button>
               </div>
               <div className="input-field col s12" id="options">
-                <h5>
+                <p>
                   Don't have an account yet? Sign up{" "}
                   <Link to="/signup">here</Link>
-                </h5>
-                <h5>
+                </p>
+                <p>
                   Click <Link to="/home">here</Link> to explore as a guest
-                </h5>
+                </p>
               </div>
             </div>
           </div>

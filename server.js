@@ -97,7 +97,7 @@ app.get("/api/comics/id/:id", (req, res) => {
 
 // Add a character to favorites
 app.post("/api/favorites/characters", (req, res) => {
-  const { id } = req.body;
+  const { email, id } = req.body;
 
   // Search the Marvel API for the character to make sure the character ID is valid
   marvel.characters.id(id).get((err, character) => {
@@ -121,14 +121,11 @@ app.post("/api/favorites/characters", (req, res) => {
 
 // Add a comic to favorites
 app.post("/api/favorites/comics", (req, res) => {
-  const { id } = req.body;
+  const { email, comic } = req.body;
+  res.json({email: email, comic: comic });
 
-  // Search the Marvel API for the comic to make sure the comic ID is valid
-  marvel.comics.id(id).get((err, comic) => {
-    if (err) {
-      return res.json(err);
-    }
-    // Add the comic ID to the user's favorites
+  /*
+    // Add the comic to the user's favorites
     req.user.favorites.comics.push(comic.id);
 
     // Save changes
@@ -141,6 +138,7 @@ app.post("/api/favorites/comics", (req, res) => {
       res.json(savedResult);
     });
   });
+  */
 });
 
 // Get all favorite comics

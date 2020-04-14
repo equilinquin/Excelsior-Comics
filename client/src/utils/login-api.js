@@ -32,5 +32,6 @@ logout: function() {
   },
   getUsers: (email) => {
     return axios.post("/user/user_data", email);
+
   }
 }

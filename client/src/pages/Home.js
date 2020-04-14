@@ -2,10 +2,11 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
-import Search from "../components/Search/index";
-import ComicCards from "../components/ComicCards/index";
+import Search from "../components/Search";
+import ComicCards from "../components/ComicCards";
 import API from "../utils/login-api";
 import contextStore from "../utils/contextStore";
+import favoritesApi from "../utils/favorites-api";
 // import "../styles/home.css"
 
 class Home extends Component {
@@ -29,10 +30,10 @@ class Home extends Component {
     e.preventDefault();
 
     const comicid = e.target.getAttribute("comicid");
-    const addedComic = this.state.sortedComics.find(
-      (comic) => comic.id === comicid
-    );
-    console.log(addedComic);
+    const addedComic = this.state.sortedComics.find(comic => comic.id.toString() === comicid);
+    favoritesApi.addFavoriteComic(addedComic, (err, response) => {
+      console.log(response);
+    })
   };
 
   componentDidMount() {

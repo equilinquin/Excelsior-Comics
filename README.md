@@ -25,7 +25,7 @@ Especially for casual fans, getting into comics can be intimidating. Having a pl
 -Run npm start
 
 ### Option 2:
--Follow heroku link to deployed app
+-Follow heroku link (https://excelsior-comics.herokuapp.com/) to deployed app
 
 Then:
 -Sign up, sign in and choose your adventure.
@@ -63,5 +63,16 @@ Then:
 
 ## Images and GIF of Deployment
 
+[Deployed Link] (https://excelsior-comics.herokuapp.com/)
 
 GIF
+
+![Login-Excelsior-Comics](https://user-images.githubusercontent.com/55672301/79191101-aef73300-7dda-11ea-934c-1b5c34c776cb.png) "Login"
+
+![Sign-up-Excelsior-Comics](https://user-images.githubusercontent.com/55672301/79189625-1ad79c80-7dd7-11ea-9045-d8800895c61b.png) "Signup"
+
+![Discover-Excelsior-Comics](https://user-images.githubusercontent.com/55672301/79189681-39d62e80-7dd7-11ea-9556-14b3d61d0160.png) "Discover"
+
+![Search-Excelsior-Comics](https://user-images.githubusercontent.com/55672301/79191357-33e24c80-7ddb-11ea-89d3-5975eb4063aa.png) "Search Results"
+
+![Profile-Excelsior-Comics](https://user-images.githubusercontent.com/55672301/79189699-48bce100-7dd7-11ea-974f-17b4af3bf342.png) "Profile"
