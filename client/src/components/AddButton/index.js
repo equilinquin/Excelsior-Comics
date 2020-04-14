@@ -11,7 +11,7 @@ function AddButton(props) {
                 comicid={props.comicid}
                 onClick={props.handleClick}
             >
-                Add
+                add
             </i>
         </Link>
     )
