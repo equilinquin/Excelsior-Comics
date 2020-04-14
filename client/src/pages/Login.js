@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import API from "../utils/login-api";
 import contextStore from "../utils/contextStore";
 import "../styles/login.css";
-import { get } from "mongoose";
+// import { get } from "mongoose";
 
 function Login() {
   const {setUser, user} = useContext(contextStore);
@@ -22,7 +22,6 @@ function Login() {
   const submitForm = () => {
     if (inputState.email && inputState.password) {
       handleSubmit(inputState);
-      // getUser();
       console.log("login confirmed");
     } else {
       console.log("this account does not exist");

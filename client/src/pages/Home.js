@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 // import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
@@ -14,6 +14,8 @@ class Home extends Component {
     searchString: "",
     sortedComics: [],
   };
+
+  contextStr = useContext(contextStore)
 
   handleSearch = (e) => {
     e.preventDefault();
@@ -41,12 +43,12 @@ class Home extends Component {
 
   render() {
     return (
-      <contextStore.Consumer>
+      <div>
         {props => (
           <div>
             <Navbar />
             <div className="container">
-              {console.log(props.user)}
+              {console.log(this.contextStr)}
               <div className="row">
                 <div className="col s12">
                   <h5 className="center-align" style={{ marginTop: "35px" }}>
@@ -58,7 +60,6 @@ class Home extends Component {
                   </h5>
                 </div>
               </div>
-
               <div className="row">
                 <div className="col s12">
                   <Search
@@ -69,7 +70,6 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-
             <div className="row">
               <ComicCards
                 sortedComics={this.state.sortedComics}
@@ -78,7 +78,7 @@ class Home extends Component {
             </div>
           </div>
         )}
-      </contextStore.Consumer>
+      </div>
     );
   }
 }
