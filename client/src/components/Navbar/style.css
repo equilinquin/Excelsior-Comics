@@ -25,7 +25,7 @@
 .nav-wrapper h1 {
       font-size:12vmin;
       color: #a58e25;
-      font-family:'Teko';
+      font-family: 'Bangers', 'Comic-Neue', cursive;
       font-weight:100;
       border-right:1vmin solid #a58e25;
       display:inline-block;
@@ -46,7 +46,7 @@
 }
 
 #app-logo {
-      font-family: 'Bangers', cursive;
+      font-family: 'Bangers', 'Comic-Neue', cursive;
       padding-left: 2%;
       margin: 0;
       -webkit-text-stroke: 0.2px black;
@@ -88,6 +88,6 @@ transition: all 0.3s ease-in-out;
 }
 
 .navbar-brand {
-      font-family: 'Bangers', cursive;
+      font-family: 'Bangers', 'Comic-Neue' cursive;
       -webkit-text-stroke: 0.2px black;
 }
