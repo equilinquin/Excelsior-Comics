@@ -32,9 +32,8 @@ function Login() {
     <div className="container" id="main">
       <div className="row">
         <div className="col s12">
-          <h1 className="title" id="title">Welcome to Excelsior Comics!</h1>
-          <h3>Discover the world of digital comics.</h3>
-          <h3>Happy hunting!</h3>
+          <h1 className="title center-align" id="title">Welcome to Excelsior Comics!</h1>
+          <h5 className="center-align">Discover new comics and connect with fellow fans. Happy hunting!</h5>
         </div>
       </div>
       <form onSubmit={(e) => {e.preventDefault();submitForm(e)}}>
