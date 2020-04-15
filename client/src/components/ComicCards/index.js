@@ -18,7 +18,7 @@ function ComicCards(props) {
           let writer = (!`${result.creators.items}` ? "Not Available" : `${result.creators.items[0].name}`)
           if (!`${result.images}`) {
             return (
-              <div className="col s6 m4 l3" key={result.id} style={{ minHeight: "570px" }}>
+              <div className="col s6 m4 l3" key={result.id} style={{ minHeight: "775px" }}>
                 <div className="card">
                   <div className="card-image">
                     <a href={link}>
@@ -43,11 +43,11 @@ function ComicCards(props) {
           }
           // let buyLink = `${result.urls[1].url}`;
           return (
-            <div className="col s6 m4 l3" key={result.id} style={{ minHeight: "570px" }}>
+            <div className="col s6 m4 l3" key={result.id} style={{ minHeight: "775px" }}>
               <div className="card">
                 <div className="card-image">
                   <a href={link}>
-                    <img src={url} alt={altText} style={{ maxHeight: "450px", overflow: "hidden" }} />
+                    <img src={url} alt={altText} />
                   </a>
                   <AddButton
                     comicid={comicId}
