@@ -13,7 +13,8 @@ class Home extends Component {
   state = {
     order: "ascending",
     searchString: "",
-    sortedComics: []
+    sortedComics: [],
+    user: []
   };
 
   handleSearch = e => {
@@ -39,19 +40,21 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    // console.log(this.state.user);
     return API.isLoggedIn
   }
 
   render() {
     return (
       <contextStore.Consumer>
+  
              
-        {props => (
+        { (props) => (
            <div>
           <div>
             <Navbar />
             <div className="container">
-              {console.log(props)}
+        {props.user.user === null ? "": <h3>Welcome: {props.user.user.firstName} {props.user.user.lastName}</h3>}
               <div className="row">
                 <div className="col s12">
                   <h5 className="center-align" style={{ marginTop: "35px" }}>
