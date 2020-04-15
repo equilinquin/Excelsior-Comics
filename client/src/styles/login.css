@@ -5,8 +5,6 @@
      -webkit-text-stroke: 0.2px black;
 }
 
-
-
 #title {
   animation-duration: 3s;
   animation-name: bounceIn;
@@ -26,13 +24,10 @@
   }
 }
 
-
 h3 {
     color: rgb(219, 210, 219);
-      font-weight:500;
-      -webkit-text-stroke: 0.2px black;
-
-  
+    font-weight:500;
+    -webkit-text-stroke: 0.2px black;
 }
 
 h3 {
