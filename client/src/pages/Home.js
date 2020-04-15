@@ -2,9 +2,10 @@ import React, { Component, useContext } from "react";
 // import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
-import Search from "../components/Search/index";
-import ComicCards from "../components/ComicCards/index";
+import Search from "../components/Search";
+import ComicCards from "../components/ComicCards";
 import API from "../utils/login-api";
+import favoritesApi from "../utils/favorites-api";
 import contextStore from "../utils/contextStore";
 // import "../styles/home.css"
 
@@ -12,12 +13,11 @@ class Home extends Component {
   state = {
     order: "ascending",
     searchString: "",
-    sortedComics: [],
+    sortedComics: []
   };
 
-  contextStr = useContext(contextStore)
+  handleSearch = e => {
 
-  handleSearch = (e) => {
     e.preventDefault();
     marvel.getComics(this.state.searchString, (err, APIresults) => {
       console.log(APIresults);
@@ -25,30 +25,33 @@ class Home extends Component {
     });
   };
 
-  handleChange = (e) => this.setState({ searchString: e.target.value });
+  handleChange = e => this.setState({ searchString: e.target.value });
 
-  handleAddButtonClick = (e) => {
+  handleAddButtonClick = e => {
     e.preventDefault();
 
     const comicid = e.target.getAttribute("comicid");
-    const addedComic = this.state.sortedComics.find(
-      (comic) => comic.id === comicid
-    );
-    console.log(addedComic);
+    const addedComic = this.state.sortedComics.find(comic => comic.id.toString() === comicid);
+    favoritesApi.addFavoriteComic(addedComic, (err, response) => {
+      console.log(response);
+    })
+
   };
 
   componentDidMount() {
-    return API.isLoggedIn;
+    return API.isLoggedIn
   }
 
   render() {
     return (
-      <div>
+      <contextStore.Consumer>
+             
         {props => (
+           <div>
           <div>
             <Navbar />
             <div className="container">
-              {console.log(this.contextStr)}
+              {console.log(props)}
               <div className="row">
                 <div className="col s12">
                   <h5 className="center-align" style={{ marginTop: "35px" }}>
@@ -77,8 +80,11 @@ class Home extends Component {
               />
             </div>
           </div>
+          </div>
         )}
-      </div>
+      
+      </contextStore.Consumer>
+
     );
   }
 }

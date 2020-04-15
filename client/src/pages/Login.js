@@ -6,7 +6,7 @@ import "../styles/login.css";
 // import { get } from "mongoose";
 
 function Login() {
-  const {setUser, user} = useContext(contextStore);
+  const {user, setUser} = useContext(contextStore);
   const [inputState, setInputState] = useState({});
 
   const handleChange = (event) => {
@@ -40,7 +40,7 @@ function Login() {
 
   return (
     user? <Redirect to="/home" />:
-    <div className="container" id="main">
+          <div className="container" id="main">
       <div className="row">
         <div className="col s12">
           <h1 className="title" id="title">Welcome to Excelsior Comics!</h1>
@@ -85,6 +85,7 @@ function Login() {
         </div>
       </form>
     </div>
+
   );
 }
 

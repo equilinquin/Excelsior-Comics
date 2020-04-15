@@ -2,7 +2,7 @@
     color: rgb(219, 210, 219);
     font-family: 'Bangers', cursive;
      font-weight: normal 700;
-     text-shadow: rgb(219, 210, 219);
+     -webkit-text-stroke: 0.2px black;
 }
 
 
@@ -30,6 +30,9 @@
 h3 {
     color: rgb(219, 210, 219);
       font-weight:500;
+      -webkit-text-stroke: 0.2px black;
+
+  
 }
 
 h3 {
@@ -89,5 +92,6 @@ h3 {
 
 #options {
 color:rgb(219, 210, 219);
+-webkit-text-stroke: 0.2px black;
 }
 
