@@ -10,7 +10,7 @@ import contextStore from './utils/contextStore'
 
 function App() {
 
-  const [user, setUser] = useState(0);
+  const [user, setUser] = useState(null);
 
   return (
     <Router>

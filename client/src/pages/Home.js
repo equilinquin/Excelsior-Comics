@@ -40,7 +40,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    console.log(this.state.user);
+    // console.log(this.state.user);
     return API.isLoggedIn
   }
 
@@ -54,7 +54,7 @@ class Home extends Component {
           <div>
             <Navbar />
             <div className="container">
-             {props.user.user !== 0 ? this.state.user = props.user.user : ''}
+             {props.user.user === null ? "": <h3>Welcome: {props.user.user.firstName}</h3>}
               <div className="row">
                 <div className="col s12">
                   <h5 className="center-align" style={{ marginTop: "35px" }}>
