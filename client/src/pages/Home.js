@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 // import { Link } from "react-router-dom";
 import marvel from "../utils/marvel-api";
 import Navbar from "../components/Navbar";
@@ -6,6 +6,7 @@ import Search from "../components/Search";
 import ComicCards from "../components/ComicCards";
 import API from "../utils/login-api";
 import favoritesApi from "../utils/favorites-api";
+import contextStore from "../utils/contextStore";
 // import "../styles/home.css"
 
 class Home extends Component {
@@ -16,6 +17,7 @@ class Home extends Component {
   };
 
   handleSearch = e => {
+
     e.preventDefault();
     marvel.getComics(this.state.searchString, (err, APIresults) => {
       console.log(APIresults);
@@ -42,41 +44,48 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar />
-
-        <div className="container">
-          <div className="row">
-            <div className="col s12">
-              <h5 className="center-align" style={{ marginTop: "35px" }}>
-                Search by keyword and click{" "}
-                <a className="btn-floating waves-effect waves-light red">
-                  <i className="material-icons">add</i>
-                </a>{" "}
-                to add a title to your reading list!
-              </h5>
+      <contextStore.Consumer>
+             
+        {props => (
+           <div>
+          <div>
+            <Navbar />
+            <div className="container">
+              {console.log(props)}
+              <div className="row">
+                <div className="col s12">
+                  <h5 className="center-align" style={{ marginTop: "35px" }}>
+                    Search by keyword and click{" "}
+                    <a className="btn-floating waves-effect waves-light red">
+                      <i className="material-icons">add</i>
+                    </a>{" "}
+                    to add a title to your reading list!
+                  </h5>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s12">
+                  <Search
+                    searchString={this.state.searchString}
+                    handleChange={this.handleChange}
+                    handleSearch={this.handleSearch}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="row">
-            <div className="col s12">
-              <Search
-                searchString={this.state.searchString}
-                handleChange={this.handleChange}
-                handleSearch={this.handleSearch}
+            <div className="row">
+              <ComicCards
+                sortedComics={this.state.sortedComics}
+                handleAddButtonClick={this.handleAddButtonClick}
               />
             </div>
           </div>
-        </div>
+          </div>
+        )}
+      
+      </contextStore.Consumer>
 
-        <div className="row">
-          <ComicCards
-            sortedComics={this.state.sortedComics}
-            handleAddButtonClick={this.handleAddButtonClick}
-          />
-        </div>
-      </div>
-    )
+    );
   }
 }
 

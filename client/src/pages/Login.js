@@ -3,9 +3,10 @@ import { Link, Redirect } from "react-router-dom";
 import API from "../utils/login-api";
 import contextStore from "../utils/contextStore";
 import "../styles/login.css";
+// import { get } from "mongoose";
 
 function Login() {
-  const {setUser, user} = useContext(contextStore);
+  const {user, setUser} = useContext(contextStore);
   const [inputState, setInputState] = useState({});
 
   const handleChange = (event) => {
@@ -14,7 +15,8 @@ function Login() {
   };
   const handleSubmit = data => {
     API.login(data).then(res=>{
-      setUser({user:res.config.data})
+      getUser();
+      setUser({user:user})
     })}
 
   const submitForm = () => {
@@ -26,10 +28,19 @@ function Login() {
     }
   };
 
+  const getUser = () => {
+    const email ={
+      'email' : inputState.email,
+    } 
+    
+    API.getUsers(email).then(res => {
+      setUser({user: res.data});
+    });
+  }
 
   return (
     user? <Redirect to="/home" />:
-    <div className="container" id="main">
+          <div className="container" id="main">
       <div className="row">
         <div className="col s12">
           <h1 className="title center-align" id="title">Welcome to Excelsior Comics!</h1>
@@ -60,19 +71,20 @@ function Login() {
                 </button>
               </div>
               <div className="input-field col s12" id="options">
-                <p>
+                <h5>
                   Don't have an account yet? Sign up{" "}
                   <Link to="/signup">here</Link>
-                </p>
-                <p>
+                </h5>
+                <h5>
                   Click <Link to="/home">here</Link> to explore as a guest
-                </p>
+                </h5>
               </div>
             </div>
           </div>
         </div>
       </form>
     </div>
+
   );
 }
 
