@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+// import contextStore from "../../utils/contextStore"
 
 function SignupCard({handleSubmit}) {
+  // const {user, setUser} = useContest(contextStore)
   const [inputState, setInputState] = useState({
   })
 
