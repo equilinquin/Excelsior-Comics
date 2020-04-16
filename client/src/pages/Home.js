@@ -7,6 +7,7 @@ import ComicCards from "../components/ComicCards";
 import API from "../utils/login-api";
 import favoritesApi from "../utils/favorites-api";
 import contextStore from "../utils/contextStore";
+import { Redirect } from "react-router-dom";
 // import "../styles/home.css"
 
 class Home extends Component {
@@ -54,7 +55,8 @@ class Home extends Component {
           <div>
             <Navbar />
             <div className="container">
-        {props.user.user === null ? "": <h3>Welcome: {props.user.user.firstName} {props.user.user.lastName}</h3>}
+
+              {/* {props.user.user === null ? <Redirect to="/home" /> : <h3>Welcome {props.user.user.firstName} {props.user.user.lastName}</h3>} */}
               <div className="row">
                 <div className="col s12">
                   <h5 className="center-align" style={{ marginTop: "35px" }}>

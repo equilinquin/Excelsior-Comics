@@ -1,16 +1,34 @@
-import React, {useContext} from "react";
+import React, {useState, useContext} from "react";
 import { Link,Redirect } from "react-router-dom";
 import SignupCard from "../components/SignupCard";
 import "./style.css";
 import API from '../utils/login-api'
 import contextStore from '../utils/contextStore'
+import { getDocumentScrollLeft } from "materialize-css";
 
 function Signup() {
-  const {setUser, user} = useContext(contextStore)
+  const {user, setUser} = useContext(contextStore)
+  const [email, setEmail] = useState('')
+
   const onSubmit = data => {
+    setEmail({ email: data.email });
     API.signup(data).then(res=>{
-      setUser({user: res.data._doc})
-    })}
+      console.log(res)
+      console.log(res.config.email)
+      setUser({user: user})
+      getUser();
+    })
+  }
+
+    const getUser = () => {
+      const userEmail ={
+        'email' : email,
+      } 
+      
+      API.getUsers(userEmail).then(res => {
+        setUser({user: res.data});
+      });
+    }
 
   return (
   user? <Redirect to='/home'/> :
